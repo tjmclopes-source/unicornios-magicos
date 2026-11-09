@@ -186,7 +186,7 @@ button:focus-visible{outline:4px solid var(--lilac-d);outline-offset:3px}
 .syl{flex:1;min-height:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px}
 .syl-pic{font-size:clamp(84px,22vmin,150px);line-height:1;filter:drop-shadow(0 8px 10px rgba(74,55,110,.25))}
 .slots{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
-.slot{min-width:78px;height:72px;border-radius:18px;border:4px dashed #b9a6e0;display:grid;place-items:center;font-size:34px;font-weight:800;padding:0 8px;background:rgba(255,255,255,.5)}
+.slot{min-width:78px;height:72px;border-radius:18px;border:4px dashed #b9a6e0;display:flex;align-items:center;justify-content:center;white-space:nowrap;font-size:34px;font-weight:800;padding:0 8px;background:rgba(255,255,255,.5)}
 .slot.full{border-style:solid;border-color:var(--mint);background:var(--white);color:var(--mint-d);animation:pop .4s;box-shadow:0 0 18px rgba(68,207,154,.5)}
 .word{font-size:clamp(30px,8vw,46px);font-weight:800;color:var(--pink);min-height:1.2em;letter-spacing:2px;text-shadow:0 2px 0 #fff}
 .tiles{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;padding-bottom:10px;flex:none}
@@ -196,6 +196,7 @@ button:focus-visible{outline:4px solid var(--lilac-d);outline-offset:3px}
 .tile.wrong{animation:shake .4s}
 .tile.hint{animation:glow 1s infinite}
 .tile u,.slot u,.word u{text-decoration:none;color:var(--pink-d);background:rgba(255,111,174,.18);border-radius:8px;padding:0 3px}
+.dgnote{display:block;font-size:.5em;letter-spacing:0;color:var(--ink-soft);text-align:center}
 .slot.gap{min-width:96px;border-color:var(--pink);background:rgba(255,111,174,.12)}
 .slot.fixed{border:0;background:none;min-width:0;padding:0 2px;color:var(--ink)}
 .tile.dg{background:linear-gradient(180deg,#ffd0e6,#ff9cc8);box-shadow:inset 0 2px 0 #fff,0 6px 0 var(--pink-d);min-width:100px}
@@ -1410,9 +1411,9 @@ function armHint(){
 function finishWord(){
   const w = syl.w;
   syl.locked = true; clearTimeout(syl.hintT); syl.wins++; stars($('#sylProgress'), syl.wins); win('ditongos');
-  $('#sylWord').innerHTML = wordHTML(w); bounce($('#sylPic'), 'pop');
-  const parts = w[1].length > 1 ? w[1].map(x => x.toLowerCase()).join(', ') + '. ' : '';
-  setTimeout(() => { fanfare(); say(`${parts}${wordOf(w)}! O ditongo é ${w[3].toLowerCase()}. ${pick(PRAISE)}`); }, 500);
+  // A voz só diz palavras inteiras: sílabas e ditongos soltos são mal pronunciados pelos telemóveis.
+  $('#sylWord').innerHTML = wordHTML(w) + `<span class="dgnote">ditongo <u>${w[3]}</u></span>`; bounce($('#sylPic'), 'pop');
+  setTimeout(() => { fanfare(); say(`${wordOf(w)}! ${pick(PRAISE)}`); }, 500);
   setTimeout(() => { if (syl.wins >= 5) party('Já conheces os ditongos!', () => { syl.wins = 0; sylRound(); }); else sylRound(); }, 3600);
 }
 function sylTap(s, b){
@@ -1421,7 +1422,7 @@ function sylTap(s, b){
   if (s === need){
     b.classList.add('used'); const slot = $('#slots').children[syl.pos];
     slot.innerHTML = syl.pos === w[2] ? hl(s, w[3]) : s; slot.classList.add('full');
-    syl.pos++; tone(PENTA[syl.pos], 0, .3, 'triangle', .16); say(s.toLowerCase());
+    syl.pos++; tone(PENTA[syl.pos], 0, .3, 'triangle', .16);
     if (syl.pos >= w[1].length) finishWord(); else armHint();
   } else { bounce(b, 'wrong'); oops(); }
 }
@@ -1430,7 +1431,7 @@ function findTap(d, b){
   if (d === syl.w[3]){ const g = $('#gap'); g.innerHTML = `<u>${d}</u>`; g.classList.add('full'); tone(1047, 0, .3, 'triangle', .16); finishWord(); }
   else { bounce(b, 'wrong'); oops(); say('Tenta outra vez!'); }
 }
-$('#sylPic').addEventListener('click', () => { if (syl.w) say(syl.w[1].length > 1 ? syl.w[1].map(x => x.toLowerCase()).join(', ') + '. ' + wordOf(syl.w) : wordOf(syl.w)); });
+$('#sylPic').addEventListener('click', () => { if (syl.w) say(wordOf(syl.w)); });
 
 /* ================= MÚSICA ================= */
 const NOTES = [['Dó',261.63,'#ff6b6b'],['Ré',293.66,'#ffa94d'],['Mi',329.63,'#ffd43b'],['Fá',349.23,'#69db7c'],
