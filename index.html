@@ -27,7 +27,7 @@
   --rainbow:#ff7aa8; --rainbow-d:#c94f9a;
   --card:#ffffffcc; --white:#ffffff; --shadow:#cbbbe8;
   --glass:linear-gradient(180deg,#ffffff 0%,#fdfaff 50%,#f0e8ff 100%);
-  --ua:210/187;
+  --ua:210/199;
   --display:'Baloo 2','Comic Sans MS','Trebuchet MS',system-ui,sans-serif;
   color-scheme: light;
 }
@@ -276,6 +276,78 @@ button:focus-visible{outline:4px solid var(--lilac-d);outline-offset:3px}
 .again{font-size:28px;font-weight:800;background:linear-gradient(180deg,#7ee6bd,var(--mint));color:var(--white);border-radius:999px;padding:10px 34px;box-shadow:0 6px 0 var(--mint-d)}
 #confetti{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:50}
 
+/* jogadores, níveis e coleção */
+.whobar{display:flex;flex-wrap:wrap;gap:8px 12px;justify-content:center;align-items:center;flex:none;width:100%;max-width:980px}
+.who,.lvlbar{background:var(--glass);border:1px solid #fff;border-radius:999px;box-shadow:0 4px 0 #d5c8ee;font-weight:800}
+.who{font-size:17px;padding:6px 16px}
+.lvlbar{display:flex;align-items:center;gap:8px;padding:4px 14px;font-size:16px}
+.xpbar{width:100px;height:12px;border-radius:6px;background:#eadff9;overflow:hidden}
+.xpbar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#ff6fae,#ffc94a,#6fdc9a,#5ec2ff,#a98bff);transition:width .4s}
+#lvlTier{font-size:14px;color:var(--orange-d)}
+#lvlPieces{font-size:14px;color:var(--ink-soft)}
+.plist{flex:1;min-height:0;overflow-y:auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;align-content:start;padding:4px}
+.pcard{border-radius:26px;background:var(--glass);box-shadow:inset 0 2px 0 #fff,0 7px 0 var(--shadow);padding:10px;display:flex;flex-direction:column;align-items:center;gap:6px}
+.pcard.cur{box-shadow:0 0 0 4px var(--lilac-d),0 7px 0 var(--shadow)}
+.pmain{display:flex;flex-direction:column;align-items:center;gap:2px;width:100%;font-size:22px}
+.pmain .mini{width:120px;aspect-ratio:var(--ua)}
+.pmain .pg{font-size:14px;color:var(--ink-soft)}
+.pact{display:flex;flex-wrap:wrap;gap:6px;justify-content:center}
+.pact button{font-size:14px;font-weight:700;background:#fff;border-radius:999px;padding:6px 10px;box-shadow:0 3px 0 #d5c8ee}
+.pform{gap:8px;flex:none}
+.pform label{font-size:20px;font-weight:800}
+.pform input{font:inherit;font-size:24px;padding:10px 14px;border-radius:16px;border:3px solid #d5c8ee;width:100%;max-width:360px;color:var(--ink);background:#fff}
+.danger{background:linear-gradient(180deg,#ff9aa5,var(--red))!important;color:#fff!important;box-shadow:0 4px 0 var(--red-d)!important;border-color:transparent!important}
+.modal{position:fixed;inset:0;z-index:45;display:grid;place-items:center;background:rgba(74,55,110,.45);padding:16px}
+.askcard{background:var(--glass);border-radius:30px;padding:22px;max-width:420px;width:100%;text-align:center;box-shadow:0 10px 0 var(--shadow)}
+.askcard p{font-size:21px;font-weight:700;margin:0 0 16px;line-height:1.3}
+.skin .mini{position:relative}
+.skin.puz .mini svg{filter:saturate(.9)}
+.quad{position:absolute;width:50%;height:50%;background:rgba(236,228,250,.94);display:grid;place-items:center;font-style:normal;font-size:16px;color:#b9a6e0}
+.quad::after{content:"?"}
+.q0{left:0;top:0;border-radius:10px 0 0 0}.q1{right:0;top:0;border-radius:0 10px 0 0}.q2{left:0;bottom:0;border-radius:0 0 0 10px}.q3{right:0;bottom:0;border-radius:0 0 10px 0}
+.skin.r-r{box-shadow:0 0 0 2px #7cc8ff,0 4px 0 #d5c8ee}
+.skin.r-l{box-shadow:0 0 0 3px #ffc94a,0 0 14px #ffe08a,0 4px 0 #d5c8ee}
+.skin[aria-pressed="true"]{box-shadow:0 0 0 4px var(--lilac-d),0 4px 0 #d5c8ee}
+.sylfact{font-size:17px;font-weight:600;text-align:center;max-width:36ch;min-height:2.6em;line-height:1.3}
+.tile.pict{font-size:46px;min-width:96px;background:var(--glass);box-shadow:inset 0 2px 0 #fff,0 6px 0 var(--shadow)}
+.sq{display:inline-grid;place-items:center;min-width:52px;height:52px;padding:0 8px;border-radius:14px;background:#fff;font-size:28px;font-weight:800;color:var(--lilac-d);box-shadow:0 3px 0 #d5c8ee}
+.sq.q{color:var(--pink);background:#ffe9f3}
+.sq.big{min-width:90px;height:90px;font-size:56px}
+.bigemo{font-size:clamp(70px,18vmin,110px);line-height:1}
+.blob.big{width:100px}
+.opt .l.en{font-size:clamp(20px,5vw,26px);color:var(--navy-d)}
+/* música */
+#musTabs{flex:none}
+.songbar{display:flex;gap:8px;align-items:center;flex:none}
+.songpick{flex:1;min-width:0;text-align:left;font-size:18px;font-weight:800;background:var(--glass);border:1px solid #fff;border-radius:999px;padding:10px 16px;box-shadow:0 4px 0 #d5c8ee;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.rstrip{display:flex;gap:6px;flex:none;overflow:hidden;min-height:66px;align-items:stretch}
+.rstrip.center{justify-content:center}
+.nc{flex:none;width:48px;border-radius:14px;background:var(--glass);display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:var(--k,#4a376e);box-shadow:0 3px 0 #d5c8ee;padding:4px 0;opacity:.7;text-align:center;line-height:1.05}
+.nc.now{opacity:1;transform:scale(1.06);box-shadow:0 0 0 3px var(--k),0 3px 0 #d5c8ee}
+.nc .fig,.ccard .fig{width:20px;height:30px}
+.rhint{font-size:15px;font-weight:700;color:var(--ink-soft);align-self:center}
+.keys.many .key{font-size:11px}
+#songSheet{position:fixed;inset:0;z-index:35;background:rgba(74,55,110,.35)}
+.sheet{position:absolute;left:0;right:0;bottom:0;max-height:82%;background:#fbf8ff;border-radius:28px 28px 0 0;display:flex;flex-direction:column;box-shadow:0 -10px 30px rgba(74,55,110,.3);padding-bottom:env(safe-area-inset-bottom,0px)}
+.sheet-head{display:flex;align-items:center;justify-content:space-between;padding:12px max(16px,env(safe-area-inset-right,0px)) 8px max(16px,env(safe-area-inset-left,0px))}
+.sheet-head h3{margin:0;font-size:24px}
+.sheet-body{overflow-y:auto;padding:0 max(16px,env(safe-area-inset-right,0px)) 16px max(16px,env(safe-area-inset-left,0px))}
+.sheet-body h4{margin:12px 0 6px;font-size:18px;color:var(--lilac-d)}
+.songrow{display:flex;width:100%;align-items:center;justify-content:space-between;gap:8px;text-align:left;background:#fff;border-radius:16px;padding:10px 12px;margin:6px 0;box-shadow:0 3px 0 #e3d9f5;font-size:17px;font-weight:700}
+.songrow small{color:var(--ink-soft);font-weight:600;font-size:12px;text-align:right}
+.songrow.cur{box-shadow:0 0 0 3px var(--lilac-d)}
+.rgmsg{text-align:center;font-size:20px;font-weight:800;min-height:1.4em;flex:none}
+.rgrow{display:flex;align-items:center;justify-content:center;gap:16px;flex:none}
+.bigdrum{width:min(140px,36vw);aspect-ratio:1;border-radius:50%;font-size:min(72px,18vw);background:radial-gradient(circle at 35% 30%,#fff,#ffd6ec 60%,#ff9cc8);box-shadow:inset 0 -8px 16px rgba(217,74,138,.35),0 8px 0 var(--pink-d);touch-action:none}
+.pdot{width:26px;height:26px;border-radius:50%;background:#fff;box-shadow:inset 0 0 0 3px #d5c8ee;flex:none;align-self:center}
+.pdot.now{background:var(--gold)}.pdot.hit{background:var(--mint)}.pdot.miss{background:#e9e2f5}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px;padding-bottom:12px}
+.ccard{background:var(--card);border-radius:22px;padding:12px 14px;box-shadow:inset 0 2px 0 #fff,0 6px 16px rgba(74,55,110,.12);display:flex;flex-direction:column;gap:6px}
+.ccard h4{margin:0;font-size:20px}
+.ccard p{margin:0;font-family:system-ui,-apple-system,'Segoe UI',sans-serif;font-size:15px;line-height:1.4}
+.ccard .figs{display:flex;gap:10px;color:var(--lilac-d)}
+.ccard button{align-self:flex-start}
+
 @media (max-height:560px){
   #countUni,#quizUni{display:none}
   .keys{height:150px}
@@ -294,11 +366,28 @@ button:focus-visible{outline:4px solid var(--lilac-d);outline-offset:3px}
 
   <button id="soundBtn" class="round" aria-label="Som ligado ou desligado">🔊</button>
 
+  <!-- JOGADORES -->
+  <section id="players" class="screen" hidden>
+    <div class="bar"><h2>Quem vai jogar?</h2></div>
+    <div class="plist" id="plist"></div>
+    <form class="panel pform" id="pForm" hidden>
+      <label for="pName" id="pFormTitle">Nome do novo jogador</label>
+      <input id="pName" maxlength="16" autocomplete="off" placeholder="Nome">
+      <div class="chips"><button class="next" type="submit">Guardar</button><button class="lvl" type="button" id="pCancel">Cancelar</button></div>
+    </form>
+    <div class="chips"><button class="lvl" id="pAdd" type="button">➕ Novo jogador</button><button class="lvl" id="pManage" type="button">⚙️ Gerir jogadores</button></div>
+    <button class="lvl danger" id="pWipe" type="button" hidden>🧹 Apagar todos e começar do zero</button>
+  </section>
+
   <!-- MENU -->
   <section id="menu" class="screen">
     <div class="head">
       <div id="menuUni" class="uni bob"></div>
       <h1 class="logo">Unicórnios <span>Mágicos</span></h1>
+    </div>
+    <div class="whobar">
+      <button class="who" data-go="players" type="button">👤 <span id="whoName"></span> · trocar</button>
+      <div class="lvlbar"><b id="lvlNum">Nível 1</b><div class="xpbar"><i id="xpFill"></i></div><span id="lvlTier"></span><span id="lvlPieces"></span></div>
     </div>
     <nav class="games" aria-label="Jogos">
       <button class="game wide" style="--c:var(--rainbow);--cd:var(--rainbow-d)" data-go="run"><span class="ico">🌈</span>Corrida Arco-íris<span class="gbadge" data-g="corrida"></span></button>
@@ -330,7 +419,9 @@ button:focus-visible{outline:4px solid var(--lilac-d);outline-offset:3px}
         <li><b>Aprender a brincar.</b> As OCEPE valorizam o brincar como forma de aprender. Cada prova é curta, dá feedback imediato e não castiga o erro: a criança tenta outra vez.</li>
         <li><b>Ouvir antes de ler.</b> As perguntas são lidas em voz alta, para que a criança de 4 anos jogue sem saber ler e a de 6 pratique a leitura.</li>
         <li><b>Dois níveis em cada jogo.</b> Um mais simples (pré-escolar) e outro mais exigente (1.º ano).</li>
-        <li><b>Motivação.</b> A cada 10 respostas certas num jogo, desbloqueia-se um unicórnio novo.</li>
+        <li><b>Motivação.</b> Cada resposta certa conta para subir de nível (há 100 níveis). Cada nível novo dá uma peça de um unicórnio: 4 peças completam-no. Os unicórnios comuns saem muitas vezes, os raros e lendários poucas. Acertar 10 provas num jogo também dá o unicórnio desse jogo.</li>
+        <li><b>Dificuldade que cresce.</b> A cada 10 níveis os desafios ficam mais difíceis: números maiores, mais opções de resposta, sílabas extra para baralhar e jogos mais rápidos. Surgem também desafios novos (números que faltam, sequências, dobros, inglês ao contrário).</li>
+        <li><b>Vários jogadores.</b> Cada criança tem o seu perfil, o seu unicórnio e o seu progresso. Em «Quem vai jogar?» › Gerir jogadores é possível mudar o nome, recomeçar do início ou apagar tudo.</li>
         <li><b>Conversar em família.</b> Na prova "Pensar", as perguntas abertas não têm resposta errada. Servem para conversar.</li>
       </ul>
 
@@ -338,10 +429,10 @@ button:focus-visible{outline:4px solid var(--lilac-d);outline-offset:3px}
       <div class="tbl"><table>
         <thead><tr><th>Jogo</th><th>O que aprende</th><th>Ligação ao currículo</th></tr></thead>
         <tbody>
-          <tr><td>🔤 Ditongos</td><td>Consciência fonológica: dividir palavras em sílabas e reconhecer os ditongos iu, ui, oi, ou, ai, au, eu, ei, ão e ãe.</td><td>Português 1.º ano (Leitura e Escrita: consciência fonológica, segmentação de palavras em sílabas); OCEPE, domínio da Linguagem Oral e Abordagem à Escrita.</td></tr>
+          <tr><td>🔤 Ditongos</td><td>Consciência fonológica: dividir palavras em sílabas e reconhecer os ditongos iu, ui, oi, ou, ai, au, eu, ei, ão e ãe. As palavras falam de Portugal e da Europa (Leiria, Aveiro, Viseu, euro, bandeira) e de cidadania (bombeiro e o 112, ecoponto, leis, profissões), com uma pequena frase explicativa.</td><td>Português 1.º ano (Leitura e Escrita: consciência fonológica, segmentação de palavras em sílabas); OCEPE, domínio da Linguagem Oral e Abordagem à Escrita.</td></tr>
           <tr><td>🔢 Contar · ➕ Contas</td><td>Contagem, correspondência número–quantidade, adição e subtração até 20.</td><td>Matemática 1.º ano (Números e Operações); OCEPE, domínio da Matemática.</td></tr>
           <tr><td>🇬🇧 Inglês</td><td>Vocabulário de animais, cores, números, comida e instrumentos, com voz em inglês.</td><td>Sensibilização antes do 3.º ano, quando o Inglês passa a ser obrigatório (nível A1).</td></tr>
-          <tr><td>🎹 Música</td><td>Notas Dó a Si, timbres de instrumentos, pulsação, imitar e reproduzir melodias.</td><td>Educação Artística – Música (1.º ciclo); OCEPE, subdomínio da Música.</td></tr>
+          <tr><td>🎹 Música</td><td>Notas Dó a Si, timbres e famílias de instrumentos. 34 canções tradicionais e de grandes compositores (domínio público) e 26 exercícios, com o ritmo certo e as figuras (semibreve, mínima, semínima, colcheia, pausas). Ritmo: pulsação, eco rítmico, andamento, dinâmica, compasso, membranofones e idiofones.</td><td>Educação Artística – Música (1.º ciclo); OCEPE, subdomínio da Música.</td></tr>
           <tr><td>🎭 Teatro</td><td>Instrumentos e famílias (cordas, sopro, percussão), palco, figurino, maestro e regras de público.</td><td>Educação Artística – Expressão Dramática/Teatro e Música; OCEPE, subdomínio Jogo Dramático/Teatro; Plano Nacional das Artes.</td></tr>
           <tr><td>🤔 Pensar</td><td>Valores (verdade, partilha, respeito, natureza), lidar com emoções e perguntas filosóficas abertas.</td><td>Cidadania e Desenvolvimento; Perfil dos Alunos (pensamento crítico, relacionamento interpessoal); OCEPE, Formação Pessoal e Social.</td></tr>
           <tr><td>🧁 Cozinha</td><td>Higiene (lavar as mãos), alimentação saudável, sequências, medir porções e contar.</td><td>Estudo do Meio 1.º ano; Referencial de Educação para a Saúde; Matemática (medida).</td></tr>
@@ -403,13 +494,15 @@ button:focus-visible{outline:4px solid var(--lilac-d);outline-offset:3px}
       <div id="dressUni" class="uni"></div>
       <div class="panel">
         <div class="row"><span class="lbl">Coleção mágica ✨</span><div class="skins" id="skins"></div>
-          <span class="tip">Acerta 10 provas num jogo para ganhar o unicórnio desse jogo. Toca numa cor para voltar ao teu unicórnio.</span></div>
+          <span class="tip">Acerta 10 provas num jogo para ganhar o unicórnio desse jogo. Cada nível novo dá uma peça: 4 peças completam um unicórnio. Há unicórnios ⚪ comuns, 💎 raros e 🌟 lendários. Toca numa cor para voltar ao teu unicórnio.</span></div>
       </div>
       <div class="panel">
         <div class="row"><span class="lbl">Corpo</span><div class="swatches" id="swBody"></div></div>
         <div class="row"><span class="lbl">Crina</span><div class="swatches" id="swMane"></div></div>
         <div class="row"><span class="lbl">Chifre</span><div class="swatches" id="swHorn"></div></div>
         <div class="row"><span class="lbl">Enfeites</span><div class="swatches" id="swExtra"></div></div>
+        <div class="row"><span class="lbl">Formato</span><div class="swatches" id="swShape"></div></div>
+        <div class="row"><span class="lbl">Estilo de desenho</span><div class="swatches" id="swStyle"></div></div>
       </div>
     </div>
   </section>
@@ -458,12 +551,14 @@ button:focus-visible{outline:4px solid var(--lilac-d);outline-offset:3px}
     <div class="chips" id="sylLevels">
       <button class="lvl" data-l="build">🧩 PEI·XE</button>
       <button class="lvl" data-l="find">🔍 Qual é o ditongo?</button>
+      <button class="lvl" data-l="pic">🖼️ Qual imagem?</button>
     </div>
     <div class="progress" id="sylProgress"></div>
     <div class="syl">
       <button class="syl-pic" id="sylPic" aria-label="Ouvir a palavra"></button>
       <div class="slots" id="slots"></div>
       <div class="word" id="sylWord"></div>
+      <div class="sylfact" id="sylFact"></div>
     </div>
     <div class="tiles" id="tiles"></div>
   </section>
@@ -474,16 +569,27 @@ button:focus-visible{outline:4px solid var(--lilac-d);outline-offset:3px}
       <button class="round" data-go="menu" aria-label="Voltar ao início">🏠</button>
       <h2>Música</h2>
     </div>
-    <div class="mus">
-      <div class="sect">Instrumento</div>
-      <div class="chips" id="instChips"></div>
-      <div class="fact" id="instFact"><span id="instFactText"></span></div>
-      <div class="sect">Aprende uma música</div>
-      <div class="chips" id="songChips"></div>
-      <div class="keys" id="keys"></div>
-      <div class="sect">Percussão</div>
-      <div class="pads" id="pads"></div>
+    <div class="chips" id="musTabs">
+      <button class="lvl" data-t="tocar" type="button">🎹 Tocar</button>
+      <button class="lvl" data-t="ritmo" type="button">🥁 Ritmo</button>
+      <button class="lvl" data-t="aprender" type="button">📖 Aprender</button>
     </div>
+    <div class="mus" id="musTocar">
+      <div class="chips" id="instChips"></div>
+      <div class="songbar"><button class="songpick" id="songPick" type="button">🎵 <span id="songName"></span> ▾</button><button class="lvl" id="songListen" type="button">👂 Ouvir</button></div>
+      <div class="rstrip" id="noteStrip"></div>
+      <div class="keys" id="keys"></div>
+      <div class="fact"><span id="songFactText"></span></div>
+    </div>
+    <div class="mus" id="musRitmo" hidden>
+      <div class="pads" id="pads"></div>
+      <div class="chips" id="rgModes"></div>
+      <div class="chips" id="rgTempo"></div>
+      <div class="rstrip center" id="rgStrip"></div>
+      <div class="rgmsg" id="rgMsg"></div>
+      <div class="rgrow"><button class="bigdrum" id="bigDrum" type="button" aria-label="Tambor">🥁</button><button class="next" id="rgStart" type="button">▶ Começar</button></div>
+    </div>
+    <div class="mus" id="musAprender" hidden><div class="cards" id="conceptCards"></div></div>
   </section>
 
   <!-- COZINHA -->
@@ -521,6 +627,15 @@ button:focus-visible{outline:4px solid var(--lilac-d);outline-offset:3px}
       <button class="again" id="againBtn">▶ Continuar</button>
     </div>
   </div>
+  <div id="songSheet" hidden>
+    <div class="sheet">
+      <div class="sheet-head"><h3>Escolhe uma música</h3><button class="round" id="sheetClose" type="button" aria-label="Fechar">✕</button></div>
+      <div class="sheet-body" id="sheetBody"></div>
+    </div>
+  </div>
+  <div id="ask" class="modal" hidden>
+    <div class="askcard"><p id="askText"></p><div class="chips"><button class="again danger" id="askYes" type="button">Sim</button><button class="lvl" id="askNo" type="button">Cancelar</button></div></div>
+  </div>
   <canvas id="confetti"></canvas>
 </div>
 
@@ -535,6 +650,20 @@ const store = {
   get(k,d){ try{ const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; }catch(e){ return d; } },
   set(k,v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} }
 };
+/* ================= JOGADORES (perfis) ================= */
+// Cada jogador guarda o seu progresso com o prefixo "<id>:" no armazenamento do navegador.
+const PROF_KEY = 'uni-profiles';
+const PER_KEYS = ['uni-cfg','uni-prog','uni-skins','uni-max','dit-lvl','mus-inst','lvl-contas','lvl-ingles','lvl-palco','lvl-pensar'];
+let profiles = store.get(PROF_KEY, null);
+if (!profiles || !profiles.list || !profiles.list.length){
+  profiles = {list:[{id:'p1', name:'Jogador 1'}], cur:'p1'};
+  PER_KEYS.forEach(k => { const v = store.get(k, undefined); if (v !== undefined) store.set('p1:' + k, v); });   // traz o progresso antigo
+  store.set(PROF_KEY, profiles);
+}
+if (!profiles.list.find(p => p.id === profiles.cur)) profiles.cur = profiles.list[0].id;
+const pk = k => profiles.cur + ':' + k;
+const ps = { get:(k,d) => store.get(pk(k), d), set:(k,v) => store.set(pk(k), v) };
+
 const WORDS = ['zero','um','dois','três','quatro','cinco','seis','sete','oito','nove','dez'];
 const PRAISE = ['Muito bem!','Boa!','Isso mesmo!','Fantástico!','Brilhante!','Uau!'];
 
@@ -566,18 +695,73 @@ const SKINS = [
   {id:'lua', game:'pensar', name:'Lua Sonhadora', body:'#eef0ff', mane:['#b7a6ff','#e0d8ff','#9fd8ff'], horn:'#e8ecff', wings:true, sp:['moon'], glow:'#d5ccff'},
   {id:'chef', game:'cozinha', name:'Chef', body:'#fff8ee', mane:['#ff6b9a','#fff0d6','#ffb3cf'], horn:'#ffcf4d', sp:['chef'], glow:'#ffe0ea'}
 ];
-let cfg = Object.assign({body:1,mane:0,horn:0,wings:true,crown:false,bow:false,glitter:false,skin:null}, store.get('uni-cfg',{}));
-let prog = store.get('uni-prog', {}), unlocked = store.get('uni-skins', []);
+// Unicórnios colecionáveis: cada um tem 4 peças, ganhas ao subir de nível. rar: c = comum, r = raro, l = lendário.
+const RB = ['#ff6b9a','#ffa95e','#ffd84d','#6fdc9a','#5ec2ff','#a98bff'];
+const K = (id, rar, name, body, mane, horn, wings, sp, glow, bow) => ({id, rar, name, body, mane, horn, wings, sp, glow, bow});
+const COLLECT = [
+  K('morango','c','Morango','#ffd0dc',['#ff4d6d','#ff8fa3'],'#fff0f3',false,['hearts'],'#ffb3c6'),
+  K('menta','c','Menta Fresca','#d8fff0',['#2fc893','#a4f0d2'],'#bff5e3',false,[],'#b8f5dc'),
+  K('limao','c','Limonada','#fffbd0',['#ffd23f','#fff3a3'],'#ffe066',false,[],'#fff3a3'),
+  K('mirtilo','c','Mirtilo','#dfe6ff',['#5465ff','#9bb1ff'],'#c7d2ff',false,[],'#c7d2ff'),
+  K('pessego','c','Pêssego','#ffe3cf',['#ff9f68','#ffd3b5'],'#ffcf4d',false,[],'#ffd3b5'),
+  K('nuvem','c','Nuvem','#ffffff',['#dfe7f2','#ffffff'],'#dfe4f0',true,[],'#e8eefc'),
+  K('lavanda','c','Lavanda','#efe5ff',['#b18cff','#e1d3ff'],'#d6c7ff',false,[],'#e1d3ff'),
+  K('cereja','c','Cereja','#ffe0e6',['#d62246','#ff7096'],'#ffcf4d',false,[],'#ffb3c1',true),
+  K('oceano','c','Oceano','#d6f3ff',['#0096c7','#48cae4','#ade8f4'],'#caf0f8',false,[],'#ade8f4'),
+  K('floresta','c','Floresta','#e6f5d8',['#2d6a4f','#74c69d'],'#b7e4c7',false,['flowers'],'#b7e4c7'),
+  K('chocolate','c','Chocolate','#f1dccb',['#7f4f24','#b08968'],'#ffcf4d',false,[],'#e6ccb2'),
+  K('abobora','c','Abóbora','#ffe5c2',['#ff7b00','#ffb347'],'#ffcf4d',false,[],'#ffd8a8'),
+  K('neve','c','Floco de Neve','#f4fbff',['#a2d2ff','#ffffff'],'#e8ecff',false,['snow'],'#cfe8ff'),
+  K('girassol','c','Girassol','#fff6cc',['#f4a261','#ffd60a'],'#ffcf4d',false,['flowers'],'#ffe58f'),
+  K('sereia','r','Sereia','#cff7f0',['#06d6a0','#118ab2','#9b5de5'],'#e8ecff',false,['stars'],'#9ef0de'),
+  K('arcoiris','r','Arco-íris Duplo','#fff8fc',RB,'#ffcf4d',true,['hearts'],'#ffd6ec'),
+  K('rainha','r','Rainha','#fff0f6',['#c9184a','#ff758f'],'#ffcf4d',false,['crown'],'#ffc2d1'),
+  K('astronauta','r','Astronauta','#e9ecef',['#4361ee','#4cc9f0'],'#dfe4f0',false,['stars','glasses'],'#bde0fe'),
+  K('cientista','r','Cientista','#f0f7ff',['#3a86ff','#8338ec'],'#e8ecff',false,['glasses'],'#cdb4db'),
+  K('fada','r','Fada','#fff0fb',['#f72585','#b5179e','#7209b7'],'#ffcf4d',true,['tiara','stars'],'#ffc8f0'),
+  K('pintora','r','Pintora','#fffdf5',['#ef476f','#ffd166','#06d6a0','#118ab2'],'#ffcf4d',false,['bowtie'],'#ffe3a3'),
+  K('inverno','r','Inverno','#eef6ff',['#4895ef','#bde0fe'],'#e8ecff',true,['snow','tiara'],'#cfe8ff'),
+  K('cantora','r','Cantora','#fff1e6',['#ff006e','#fb5607'],'#ffcf4d',false,['notes','hearts'],'#ffc6a5'),
+  K('fadista','r','Fadista','#f8f0e3',['#2b2340','#6d597a'],'#ffcf4d',false,['notes'],'#e5d4c0'),
+  K('galaxia','l','Galáxia','#2b2d6e',['#f72585','#7209b7','#4cc9f0','#ffd60a'],'#ffd60a',true,['stars','moon'],'#a78bfa'),
+  K('ouro','l','Unicórnio de Ouro','#ffe9a8',['#ffb703','#ffd60a','#fff3b0'],'#ffd60a',true,['crown','stars'],'#ffd60a'),
+  K('cristal','l','Cristal','#eaf6ff',['#bde0fe','#ffc8dd','#cdb4db'],'#ffffff',true,['tiara','snow'],'#ffffff'),
+  K('fogodeartificio','l','Fogo de Artifício','#1d1b3a',RB,'#ffcf4d',false,['stars','notes'],'#ff8fbf'),
+  K('aurora','l','Aurora Boreal','#e0fbfc',['#06d6a0','#4cc9f0','#b5179e'],'#e8ecff',true,['stars'],'#7df9ff'),
+  K('europa','l','Estrela da Europa','#2a4bb5',['#ffd60a','#ffe680'],'#ffd60a',true,['eustars'],'#ffd60a')
+];
+// Cada unicórnio tem um formato e um estilo de desenho
+const GAME_LOOK = {fenix:['ponei','aguarela'], noite:['classico','neon'], algodao:['fofo','peluche'], sabia:['classico','plano'], flores:['bebe','aguarela'],
+  viajante:['ponei','esboco'], maestro:['classico','vitral'], bailarina:['ponei','brilho'], lua:['bebe','neon'], chef:['fofo','plano']};
+SKINS.forEach(s => { const g = GAME_LOOK[s.id]; if (g){ s.shape = g[0]; s.style = g[1]; } });
+const SH4 = ['classico','bebe','ponei','fofo'];
+COLLECT.forEach((s, i) => {
+  s.shape = SH4[i % 4];
+  s.style = s.rar === 'l' ? ['neon','vitral','brilho'][i % 3] : s.rar === 'r' ? ['vitral','aguarela','esboco','brilho','plano','peluche'][i % 6] : ['brilho','plano','aguarela','peluche','esboco'][i % 5];
+});
+Object.assign(COLLECT.find(s => s.id === 'galaxia'), {style:'neon', shape:'ponei'});
+Object.assign(COLLECT.find(s => s.id === 'ouro'), {style:'brilho', shape:'classico'});
+Object.assign(COLLECT.find(s => s.id === 'cristal'), {style:'vitral', shape:'bebe'});
+Object.assign(COLLECT.find(s => s.id === 'europa'), {style:'plano', shape:'classico'});
+SKINS.push(...COLLECT);
+
+let cfg = Object.assign({body:1,mane:0,horn:0,wings:true,crown:false,bow:false,glitter:false,skin:null}, ps.get('uni-cfg',{}));
+let prog = ps.get('uni-prog', {}), unlocked = ps.get('uni-skins', []), pieces = ps.get('uni-pieces', {}), xp = ps.get('uni-xp', 0);
 
 function shade(hex, amt){
   const n = parseInt(hex.slice(1),16); const c = [n>>16, n>>8&255, n&255];
   return '#' + c.map(v => Math.round(amt<0 ? v*(1+amt) : v+(255-v)*amt)).map(v => Math.max(0,Math.min(255,v)).toString(16).padStart(2,'0')).join('');
 }
 const LINE = '#5a4682';
+// Formatos do corpo e estilos de desenho
+const SHAPES = {classico:{leg:44,rx:54,ry:33,head:1}, bebe:{leg:30,rx:48,ry:31,head:1.28}, ponei:{leg:56,rx:50,ry:28,head:.95}, fofo:{leg:34,rx:60,ry:38,head:1.1}};
+const SHAPE_LIST = [['classico','🦄','Clássico'],['bebe','🍼','Bebé'],['ponei','🐎','Pónei'],['fofo','🧸','Fofo']];
+const STYLE_LIST = [['brilho','✨','Brilhante'],['plano','🎨','Plano'],['esboco','✏️','Esboço'],['aguarela','💧','Aguarela'],['peluche','🧶','Peluche']];
+let OUT = LINE, OW = 5;
 function layer(shapes){
   let out = '', fill = '';
   shapes.forEach(s => {
-    out  += `<${s[0]} ${s[1]} fill="${LINE}" stroke="${LINE}" stroke-width="5" stroke-linejoin="round"/>`;
+    out  += `<${s[0]} ${s[1]} fill="${OUT}" stroke="${OUT}" stroke-width="${OW}" stroke-linejoin="round"/>`;
     fill += `<${s[0]} ${s[1]} fill="${s[2]}"/>`;
   });
   return out + fill;
@@ -586,97 +770,111 @@ function star4(x,y,r,c){
   return `<path d="M${x} ${y-r} Q${x+r*.2} ${y-r*.2} ${x+r} ${y} Q${x+r*.2} ${y+r*.2} ${x} ${y+r} Q${x-r*.2} ${y+r*.2} ${x-r} ${y} Q${x-r*.2} ${y-r*.2} ${x} ${y-r}Z" fill="${c}"/>`;
 }
 const tw = (x,y,r,c,d) => `<g>${star4(x,y,r,c)}<animate attributeName="opacity" values="1;.15;1" dur="1.8s" begin="${d}s" repeatCount="indefinite"/></g>`;
+const heart = (x,y,s,c) => `<path d="M${x} ${y+s*.9} C${x-s*1.6} ${y-s*.1} ${x-s*.6} ${y-s*1.2} ${x} ${y-s*.3} C${x+s*.6} ${y-s*1.2} ${x+s*1.6} ${y-s*.1} ${x} ${y+s*.9}Z" fill="${c}"/>`;
 function flower(x,y,c){
-  let s = ''; for (let k=0;k<5;k++){ const a = k*Math.PI*2/5; s += `<circle cx="${(x+Math.cos(a)*3.8).toFixed(1)}" cy="${(y+Math.sin(a)*3.8).toFixed(1)}" r="3.4" fill="${c}" stroke="${LINE}" stroke-width=".8"/>`; }
+  let s = ''; for (let k=0;k<5;k++){ const a = k*Math.PI*2/5; s += `<circle cx="${(x+Math.cos(a)*3.8).toFixed(1)}" cy="${(y+Math.sin(a)*3.8).toFixed(1)}" r="3.4" fill="${c}" stroke="${OUT}" stroke-width=".8"/>`; }
   return s + `<circle cx="${x}" cy="${y}" r="2.6" fill="#ffd23f"/>`;
 }
 function lookOf(c){
   const sk = c.skin && SKINS.find(s => s.id === c.skin);
-  if (sk) return {body:sk.body, mane:sk.mane, horn:sk.horn, wings:!!sk.wings, crown:false, bow:!!sk.bow, glitter:true, sp:sk.sp, glow:sk.glow};
-  return {body:BODY[c.body][1], mane:MANE[c.mane][1], horn:HORN[c.horn][1], wings:c.wings, crown:c.crown, bow:c.bow, glitter:c.glitter, sp:[], glow:null};
+  if (sk) return {body:sk.body, mane:sk.mane, horn:sk.horn, wings:!!sk.wings, crown:(sk.sp || []).includes('crown'), bow:!!sk.bow, glitter:true, sp:sk.sp || [], glow:sk.glow, shape:sk.shape || 'classico', style:sk.style || 'brilho'};
+  return {body:BODY[c.body][1], mane:MANE[c.mane][1], horn:HORN[c.horn][1], wings:c.wings, crown:c.crown, bow:c.bow, glitter:c.glitter, sp:[], glow:null, shape:c.shape || 'classico', style:c.style || 'brilho'};
 }
 let UID = 0;
 function unicornSVG(c, happy){
-  const L = lookOf(c), u = 'u' + (UID++), sp = L.sp;
-  const body = L.body, mane = L.mane, horn = L.horn;
-  const mg = i => `url(#${u}m${i % mane.length})`;
-  let d = `<defs>
-    <radialGradient id="${u}b" cx=".38" cy=".28" r=".85"><stop offset="0" stop-color="${shade(body,.7)}"/><stop offset=".5" stop-color="${body}"/><stop offset="1" stop-color="${shade(body,-.22)}"/></radialGradient>
-    <radialGradient id="${u}d" cx=".4" cy=".25" r=".9"><stop offset="0" stop-color="${shade(body,.15)}"/><stop offset="1" stop-color="${shade(body,-.3)}"/></radialGradient>
-    <linearGradient id="${u}h" x1="0" y1="0" x2="1" y2=".25"><stop offset="0" stop-color="${shade(horn,.7)}"/><stop offset=".45" stop-color="${horn}"/><stop offset="1" stop-color="${shade(horn,-.3)}"/></linearGradient>
-    <radialGradient id="${u}i" cx=".42" cy=".32" r=".75"><stop offset="0" stop-color="#a98bff"/><stop offset=".55" stop-color="#4b2f8f"/><stop offset="1" stop-color="#1e1238"/></radialGradient>
-    <linearGradient id="${u}w" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="${shade(mane[Math.min(1,mane.length-1)], .45)}"/></linearGradient>`;
-  mane.forEach((col,i) => d += `<radialGradient id="${u}m${i}" cx=".35" cy=".28" r=".8"><stop offset="0" stop-color="${shade(col,.6)}"/><stop offset=".55" stop-color="${col}"/><stop offset="1" stop-color="${shade(col,-.22)}"/></radialGradient>`);
+  const L = lookOf(c), u = 'u' + (UID++), sp = L.sp, SH = SHAPES[L.shape] || SHAPES.classico, st = L.style;
+  const neon = st === 'neon', sketch = st === 'esboco', flat = st === 'plano' || st === 'vitral' || neon || sketch;
+  let body = L.body, mane = L.mane.slice(), horn = L.horn;
+  if (sketch){ body = '#fffdf7'; mane = mane.map(m => shade(m, .35)); horn = shade(horn, .3); }
+  if (neon) body = shade(L.body, -.78);
+  OUT = neon ? (L.glow || '#ff7ad9') : st === 'vitral' ? '#1b1030' : sketch ? '#3b3b44' : st === 'aguarela' ? shade(L.body, -.45) : LINE;
+  OW = st === 'vitral' ? 9 : neon ? 4 : sketch ? 3.5 : st === 'aguarela' ? 3 : st === 'plano' ? 6 : 5;
+  const gloss = !flat;
+  const rg = (id, col, a, b) => flat ? `<radialGradient id="${id}"><stop offset="0" stop-color="${col}"/><stop offset="1" stop-color="${col}"/></radialGradient>`
+    : `<radialGradient id="${id}" cx=".38" cy=".28" r=".85"><stop offset="0" stop-color="${shade(col,a)}"/><stop offset=".5" stop-color="${col}"/><stop offset="1" stop-color="${shade(col,b)}"/></radialGradient>`;
+  let d = '<defs>' + rg(u+'b', body, .7, -.22) + rg(u+'d', shade(body, -.08), .15, -.3) +
+    `<linearGradient id="${u}h" x1="0" y1="0" x2="1" y2=".25"><stop offset="0" stop-color="${flat ? horn : shade(horn,.7)}"/><stop offset=".45" stop-color="${horn}"/><stop offset="1" stop-color="${flat ? horn : shade(horn,-.3)}"/></linearGradient>
+     <radialGradient id="${u}i" cx=".42" cy=".32" r=".75"><stop offset="0" stop-color="${neon ? '#ffffff' : '#a98bff'}"/><stop offset=".55" stop-color="${neon ? (L.glow || '#ff7ad9') : '#4b2f8f'}"/><stop offset="1" stop-color="#1e1238"/></radialGradient>
+     <linearGradient id="${u}w" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${neon ? body : '#ffffff'}"/><stop offset="1" stop-color="${neon ? body : shade(mane[Math.min(1, mane.length-1)], .45)}"/></linearGradient>`;
+  mane.forEach((col, i) => d += rg(`${u}m${i}`, col, .6, -.22));
+  if (sketch) d += `<filter id="${u}f"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="3"/><feDisplacementMap in="SourceGraphic" scale="2.6"/></filter>`;
+  if (st === 'aguarela') d += `<filter id="${u}f" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency=".045" numOctaves="3" seed="7"/><feDisplacementMap in="SourceGraphic" scale="6"/><feGaussianBlur stdDeviation=".5"/></filter>`;
+  if (st === 'peluche') d += `<filter id="${u}f"><feTurbulence type="fractalNoise" baseFrequency="1.4" numOctaves="1" seed="2"/><feDisplacementMap in="SourceGraphic" scale="3.4"/></filter>`;
   d += '</defs>';
+  const mg = i => `url(#${u}m${i % mane.length})`;
   const glow = L.glow || 'rgba(255,255,255,.95)';
-  let s = `<svg viewBox="0 -12 210 187" xmlns="http://www.w3.org/2000/svg" style="filter:drop-shadow(0 0 7px ${glow})">` + d;
-  s += `<ellipse cx="100" cy="163" rx="70" ry="6" fill="#4a376e" opacity=".14"/>`;
+  const filt = neon ? `drop-shadow(0 0 3px ${glow}) drop-shadow(0 0 9px ${glow})` : `drop-shadow(0 0 7px ${glow})`;
+  const hasF = sketch || st === 'aguarela' || st === 'peluche';
+  let s = `<svg viewBox="0 -24 210 199" xmlns="http://www.w3.org/2000/svg" style="filter:${filt}">` + d + (hasF ? `<g filter="url(#${u}f)">` : '<g>');
+  const LG = SH.leg, tx = 54 - SH.rx, by = 103;
+  s += `<ellipse cx="100" cy="${114 + LG + 6}" rx="70" ry="6" fill="#4a376e" opacity=".14"/>`;
   // cauda e pernas de trás
-  const tail = [[46,94,12],[36,104,13],[29,118,13],[29,133,11],[35,146,8]];
+  const tail = [[46,94,12],[36,104,13],[29,118,13],[29,133,11],[35,146,8]].map(t => [t[0] + tx, t[1], t[2]]);
   s += layer(tail.map((t,i) => ['circle',`cx="${t[0]}" cy="${t[1]}" r="${t[2]}"`, mg(i)])
-      .concat([['rect','x="58" y="114" width="15" height="44" rx="7"',`url(#${u}d)`],['rect','x="110" y="114" width="15" height="44" rx="7"',`url(#${u}d)`]]));
-  tail.forEach(t => s += `<circle cx="${t[0]-t[2]*.35}" cy="${t[1]-t[2]*.4}" r="${t[2]*.28}" fill="#fff" opacity=".5"/>`);
-  // corpo, pescoço, cabeça
+      .concat([['rect',`x="${58+tx*.6}" y="114" width="15" height="${LG}" rx="7"`,`url(#${u}d)`],['rect',`x="110" y="114" width="15" height="${LG}" rx="7"`,`url(#${u}d)`]]));
+  if (gloss) tail.forEach(t => s += `<circle cx="${t[0]-t[2]*.35}" cy="${t[1]-t[2]*.4}" r="${t[2]*.28}" fill="#fff" opacity=".5"/>`);
+  // corpo, pescoço e pernas da frente
   s += layer([
-    ['ellipse','cx="92" cy="103" rx="54" ry="33"',`url(#${u}b)`],
+    ['ellipse',`cx="92" cy="${by}" rx="${SH.rx}" ry="${SH.ry}"`,`url(#${u}b)`],
     ['path','d="M118 98 C124 76 130 60 138 42 L170 52 C162 72 156 92 148 112 Z"',`url(#${u}b)`],
-    ['rect','x="76" y="116" width="15" height="44" rx="7"',`url(#${u}b)`],['rect','x="128" y="112" width="15" height="46" rx="7"',`url(#${u}b)`],
-    ['path','d="M140 32 L141 8 L156 28 Z"',`url(#${u}b)`],
-    ['ellipse','cx="154" cy="48" rx="27" ry="23"',`url(#${u}b)`],['ellipse','cx="175" cy="60" rx="17" ry="14"',`url(#${u}b)`]
+    ['rect',`x="${76+tx*.4}" y="116" width="15" height="${LG}" rx="7"`,`url(#${u}b)`],['rect',`x="128" y="112" width="15" height="${LG+2}" rx="7"`,`url(#${u}b)`]
   ]);
-  // brilhos do pelo
-  s += `<ellipse cx="78" cy="84" rx="28" ry="7" fill="#fff" opacity=".55" transform="rotate(-8 78 84)"/>
-        <ellipse cx="146" cy="34" rx="10" ry="4.5" fill="#fff" opacity=".6" transform="rotate(-22 146 34)"/>
-        <ellipse cx="177" cy="52" rx="6" ry="2.6" fill="#fff" opacity=".55"/>
-        <rect x="80" y="122" width="3" height="24" rx="1.5" fill="#fff" opacity=".45"/><rect x="132" y="118" width="3" height="26" rx="1.5" fill="#fff" opacity=".45"/>`;
+  if (gloss) s += `<ellipse cx="78" cy="${by-19}" rx="28" ry="7" fill="#fff" opacity=".55" transform="rotate(-8 78 ${by-19})"/>`;
+  if (st === 'vitral') s += `<path d="M60 ${by-10} L92 ${by+18} L124 ${by-12} M92 ${by+18} L92 ${by+SH.ry}" stroke="${OUT}" stroke-width="4" fill="none"/>`;
   if (sp.includes('stars')) s += tw(70,98,5,'#fff',0) + tw(98,114,4,'#fff',.5) + tw(112,92,3.6,'#fffbd0',1) + tw(82,120,3,'#fff',1.3) + tw(52,110,3.4,'#fff',.8);
+  if (sp.includes('hearts')) s += heart(68,98,5,'#ff5c8a') + heart(100,113,4.5,'#ff5c8a') + heart(116,95,4,'#ff8fb3') + heart(84,121,3.6,'#ff8fb3');
+  if (sp.includes('snow')) s += ['70,96','100,112','114,92','82,120'].map((p, i) => { const [x, y] = p.split(','); return `<text x="${x}" y="${y}" font-size="${12-i}" fill="#7cb8f0" text-anchor="middle">❄</text>`; }).join('');
+  if (sp.includes('eustars')) for (let k=0;k<12;k++){ const a = k*Math.PI/6; s += star4(+(90+Math.cos(a)*17).toFixed(1), +(by+Math.sin(a)*17).toFixed(1), 3.6, '#ffd60a'); }
   if (sp.includes('moon')) s += `<circle cx="84" cy="104" r="11" fill="#ffe08a"/><circle cx="89" cy="100" r="10" fill="url(#${u}b)"/>`;
-  if (sp.includes('tutu')) s += `<path d="M36 112 Q92 142 148 112 L156 128 Q92 164 28 128 Z" fill="#ff9ccf" opacity=".92" stroke="${LINE}" stroke-width="2.5" stroke-linejoin="round"/>
-        <path d="M34 122 Q92 154 152 122" stroke="#fff" stroke-width="2.4" fill="none" opacity=".75"/>` + tw(60,126,3,'#fff',.2) + tw(120,128,3,'#fff',.9);
-  // cascos
-  [[58,150],[110,150],[76,152],[128,150]].forEach(p => s += `<rect x="${p[0]}" y="${p[1]}" width="15" height="9" rx="4" fill="url(#${u}h)" stroke="${LINE}" stroke-width="2.5"/><rect x="${p[0]+3}" y="${p[1]+2}" width="5" height="2" rx="1" fill="#fff" opacity=".7"/>`);
-  s += `<path d="M143.5 27 L144 14 L151 26 Z" fill="#ffb3cf"/>`;
-  // chapéus atrás do chifre
-  if (sp.includes('chef')) s += layer([['rect','x="123" y="12" width="28" height="16" rx="3"','#ffffff'],['circle','cx="127" cy="6" r="9"','#ffffff'],['circle','cx="138" cy="0" r="11"','#ffffff'],['circle','cx="149" cy="6" r="9"','#ffffff']]) + `<path d="M128 14 V26 M137 14 V26 M146 14 V26" stroke="#e6dff2" stroke-width="2"/>`;
-  if (sp.includes('tophat')) s += layer([['rect','x="123" y="-6" width="24" height="28" rx="3"','#2b2340'],['ellipse','cx="135" cy="23" rx="17" ry="4.5"','#2b2340']]) + `<rect x="123" y="13" width="24" height="5" fill="#e53935"/><rect x="127" y="-3" width="4" height="14" rx="2" fill="#fff" opacity=".25"/>`;
-  // chifre
-  s += `<path d="M146 27 L165 -3 L161 31 Z" fill="url(#${u}h)" stroke="${LINE}" stroke-width="2.5" stroke-linejoin="round"/>`;
-  s += `<path d="M150 21 L161 23 M154 13 L162 15 M158 5 L163 6.5" stroke="#fff" stroke-width="2.2" stroke-linecap="round" opacity=".9"/>`;
-  s += tw(165,-4,6,'#fff',0);
-  // crina
-  const mn = [[115,92,10],[118,78,12],[123,63,12],[129,48,12],[137,35,11],[147,27,9]];
+  if (sp.includes('tutu')) s += `<path d="M36 112 Q92 142 148 112 L156 128 Q92 164 28 128 Z" fill="#ff9ccf" opacity=".92" stroke="${OUT}" stroke-width="2.5" stroke-linejoin="round"/><path d="M34 122 Q92 154 152 122" stroke="#fff" stroke-width="2.4" fill="none" opacity=".75"/>`;
+  [[58+tx*.6,114+LG-8],[110,114+LG-8],[76+tx*.4,116+LG-8],[128,114+LG-6]].forEach(p => s += `<rect x="${p[0]}" y="${p[1]}" width="15" height="9" rx="4" fill="url(#${u}h)" stroke="${OUT}" stroke-width="2.5"/>`);
+  // crina do pescoço
+  const mn = [[115,92,10],[118,78,12],[123,63,12],[129,48,12],[137,35,11]];
   s += layer(mn.map((t,i) => ['circle',`cx="${t[0]}" cy="${t[1]}" r="${t[2]}"`, mg(5-i)]));
-  mn.forEach(t => s += `<circle cx="${t[0]-t[2]*.35}" cy="${t[1]-t[2]*.4}" r="${t[2]*.28}" fill="#fff" opacity=".55"/>`);
-  if (sp.includes('flowers')) s += flower(137,35,'#ff8fb8') + flower(126,55,'#ffffff') + flower(118,78,'#ffd84d') + flower(147,25,'#ffffff');
+  if (gloss) mn.forEach(t => s += `<circle cx="${t[0]-t[2]*.35}" cy="${t[1]-t[2]*.4}" r="${t[2]*.28}" fill="#fff" opacity=".55"/>`);
+  if (sp.includes('flowers')) s += flower(137,35,'#ff8fb8') + flower(126,55,'#ffffff') + flower(118,78,'#ffd84d');
   if (sp.includes('flame')) s += tw(30,100,4,'#ffd23f',.3) + tw(24,140,3.4,'#ff9a3c',.9) + tw(120,60,3.4,'#ffd23f',1.2);
   // asas
   if (L.wings){
-    s += `<path d="M90 88 C72 42 36 38 32 62 C18 64 20 86 44 88 C32 98 46 112 72 100 Z" fill="url(#${u}w)" stroke="${LINE}" stroke-width="2.5" stroke-linejoin="round"/>`;
-    s += `<path d="M84 86 C66 64 52 58 44 62 M80 92 C66 84 52 82 40 80 M76 98 C62 96 54 98 48 100" stroke="${LINE}" stroke-width="1.8" fill="none" stroke-linecap="round" opacity=".4"/>`;
-    s += `<path d="M60 52 C70 54 78 64 84 78" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" opacity=".8"/>`;
+    s += `<path d="M90 88 C72 42 36 38 32 62 C18 64 20 86 44 88 C32 98 46 112 72 100 Z" fill="url(#${u}w)" stroke="${OUT}" stroke-width="${Math.min(OW*.6, 4)}" stroke-linejoin="round"/>`;
+    s += `<path d="M84 86 C66 64 52 58 44 62 M80 92 C66 84 52 82 40 80 M76 98 C62 96 54 98 48 100" stroke="${OUT}" stroke-width="1.8" fill="none" stroke-linecap="round" opacity=".45"/>`;
   }
-  // cara
-  if (happy) s += `<path d="M152 49 Q160 39 168 49" stroke="#3b2a55" stroke-width="3.4" fill="none" stroke-linecap="round"/>`;
+  // cabeça (pode crescer no formato Bebé)
+  s += `<g transform="translate(150 52) scale(${SH.head}) translate(-150 -52)">`;
+  s += layer([['path','d="M140 32 L141 8 L156 28 Z"',`url(#${u}b)`],['ellipse','cx="154" cy="48" rx="27" ry="23"',`url(#${u}b)`],['ellipse','cx="175" cy="60" rx="17" ry="14"',`url(#${u}b)`]]);
+  if (gloss) s += `<ellipse cx="146" cy="34" rx="10" ry="4.5" fill="#fff" opacity=".6" transform="rotate(-22 146 34)"/><ellipse cx="177" cy="52" rx="6" ry="2.6" fill="#fff" opacity=".55"/>`;
+  s += `<path d="M143.5 27 L144 14 L151 26 Z" fill="#ffb3cf"/>`;
+  if (sp.includes('chef')) s += layer([['rect','x="123" y="12" width="28" height="16" rx="3"','#ffffff'],['circle','cx="127" cy="6" r="9"','#ffffff'],['circle','cx="138" cy="0" r="11"','#ffffff'],['circle','cx="149" cy="6" r="9"','#ffffff']]);
+  if (sp.includes('tophat')) s += layer([['rect','x="123" y="-6" width="24" height="28" rx="3"','#2b2340'],['ellipse','cx="135" cy="23" rx="17" ry="4.5"','#2b2340']]) + `<rect x="123" y="13" width="24" height="5" fill="#e53935"/>`;
+  s += `<path d="M146 27 L165 -3 L161 31 Z" fill="url(#${u}h)" stroke="${OUT}" stroke-width="${Math.min(OW*.5, 4)}" stroke-linejoin="round"/>`;
+  s += `<path d="M150 21 L161 23 M154 13 L162 15 M158 5 L163 6.5" stroke="#fff" stroke-width="2.2" stroke-linecap="round" opacity=".9"/>` + tw(165,-4,6,'#fff',0);
+  s += layer([['circle','cx="147" cy="27" r="9"', mg(0)]]);
+  if (gloss) s += `<circle cx="144" cy="23.5" r="2.5" fill="#fff" opacity=".55"/>`;
+  if (sp.includes('flowers')) s += flower(147,25,'#ffffff');
+  const eye = neon ? '#ffffff' : '#3b2a55';
+  if (happy) s += `<path d="M152 49 Q160 39 168 49" stroke="${eye}" stroke-width="3.4" fill="none" stroke-linecap="round"/>`;
   else s += `<ellipse cx="160" cy="46" rx="5.6" ry="7.4" fill="url(#${u}i)"/><circle cx="162.2" cy="42.8" r="2.4" fill="#fff"/><circle cx="158.4" cy="49.4" r="1.1" fill="#fff" opacity=".9"/>
-             <path d="M154.6 40.5 L150.6 37 M156.2 38.4 L153.8 33.8 M158.6 37.4 L157.8 32.6" stroke="#3b2a55" stroke-width="2" stroke-linecap="round"/>`;
-  s += `<ellipse cx="167" cy="58.5" rx="6" ry="4.2" fill="#ff8fb8" opacity=".55"/><circle cx="185" cy="56" r="1.8" fill="${LINE}"/>`;
-  s += `<path d="${happy ? 'M173 66 Q179 74 186 65' : 'M174 67 Q179 71 185 66'}" stroke="${LINE}" stroke-width="2.4" fill="${happy ? '#ff7aa8' : 'none'}" stroke-linecap="round" stroke-linejoin="round"/>`;
-  if (sp.includes('glasses')) s += `<circle cx="160" cy="46" r="10.5" fill="rgba(210,235,255,.25)" stroke="#3b2a55" stroke-width="2.6"/><path d="M149.6 44 L138 39" stroke="#3b2a55" stroke-width="2.6" stroke-linecap="round"/><path d="M154 40 L157 37" stroke="#fff" stroke-width="2" stroke-linecap="round"/>`;
-  // enfeites
+             <path d="M154.6 40.5 L150.6 37 M156.2 38.4 L153.8 33.8 M158.6 37.4 L157.8 32.6" stroke="${eye}" stroke-width="2" stroke-linecap="round"/>`;
+  s += `<ellipse cx="167" cy="58.5" rx="6" ry="4.2" fill="#ff8fb8" opacity=".55"/><circle cx="185" cy="56" r="1.8" fill="${OUT}"/>`;
+  s += `<path d="${happy ? 'M173 66 Q179 74 186 65' : 'M174 67 Q179 71 185 66'}" stroke="${OUT}" stroke-width="2.4" fill="${happy ? '#ff7aa8' : 'none'}" stroke-linecap="round" stroke-linejoin="round"/>`;
+  if (sp.includes('glasses')) s += `<circle cx="160" cy="46" r="10.5" fill="rgba(210,235,255,.25)" stroke="#3b2a55" stroke-width="2.6"/><path d="M149.6 44 L138 39" stroke="#3b2a55" stroke-width="2.6" stroke-linecap="round"/>`;
   if (L.crown || sp.includes('tiara')){
     const col = sp.includes('tiara') ? '#eef1ff' : '#ffd23f';
-    s += `<path d="M124 30 L124 13 L131 21 L136 8 L141 20 L148 12 L146 30 Z" fill="${col}" stroke="${LINE}" stroke-width="2.5" stroke-linejoin="round"/>`;
+    s += `<path d="M124 30 L124 13 L131 21 L136 8 L141 20 L148 12 L146 30 Z" fill="${col}" stroke="${OUT}" stroke-width="2.5" stroke-linejoin="round"/>`;
     s += `<circle cx="130" cy="25" r="2.4" fill="#ff5c9d"/><circle cx="137" cy="24" r="2.4" fill="#5ec2ff"/><circle cx="143" cy="25" r="2.4" fill="#6fdc9a"/>` + tw(136,8,4,'#fff',.6);
   }
+  s += '</g>';
   if (L.bow){
-    s += `<path d="M46 92 L31 81 L31 103 Z M46 92 L61 81 L61 103 Z" fill="#ff5c9d" stroke="${LINE}" stroke-width="2.5" stroke-linejoin="round"/>`;
-    s += `<circle cx="46" cy="92" r="5.5" fill="#ff8fbf" stroke="${LINE}" stroke-width="2.5"/>`;
+    s += `<path d="M${46+tx} 92 L${31+tx} 81 L${31+tx} 103 Z M${46+tx} 92 L${61+tx} 81 L${61+tx} 103 Z" fill="#ff5c9d" stroke="${OUT}" stroke-width="2.5" stroke-linejoin="round"/>`;
+    s += `<circle cx="${46+tx}" cy="92" r="5.5" fill="#ff8fbf" stroke="${OUT}" stroke-width="2.5"/>`;
   }
-  if (sp.includes('bowtie')) s += `<path d="M150 98 L139 91 L139 105 Z M150 98 L161 91 L161 105 Z" fill="#2b2340" stroke="${LINE}" stroke-width="2" stroke-linejoin="round"/><circle cx="150" cy="98" r="3.6" fill="#e53935"/>`;
+  if (sp.includes('bowtie')) s += `<path d="M150 98 L139 91 L139 105 Z M150 98 L161 91 L161 105 Z" fill="#2b2340" stroke="${OUT}" stroke-width="2" stroke-linejoin="round"/><circle cx="150" cy="98" r="3.6" fill="#e53935"/>`;
   if (sp.includes('notes')) s += `<text x="12" y="44" font-size="22" fill="#ffb72e" font-family="serif">♪</text><text x="186" y="106" font-size="20" fill="#a98bff" font-family="serif">♫</text>`;
-  if (L.glitter) s += tw(14,40,9,'#ffd23f',0) + tw(196,98,8,'#ff8fbf',.6) + tw(78,22,7,'#9fd8ff',1.1) + tw(198,16,10,'#ffd23f',.3) + tw(100,160,6,'#c4a8ff',.9);
+  s += '</g>';
+  if (L.glitter) s += tw(14,40,9,'#ffd23f',0) + tw(196,98,8,'#ff8fbf',.6) + tw(78,18,7,'#9fd8ff',1.1) + tw(198,12,10,'#ffd23f',.3) + tw(100,166,6,'#c4a8ff',.9);
   return s + '</svg>';
 }
+
 const svgURL = svg => 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
 const UNI_SLOTS = ['#menuUni','#dressUni','#countUni','#quizUni'];
 function renderUnis(){ UNI_SLOTS.forEach(id => { $(id).innerHTML = unicornSVG(cfg); }); }
@@ -763,14 +961,52 @@ $('#againBtn').addEventListener('click', () => {
 });
 
 /* ================= PROGRESSO E COLEÇÃO ================= */
+/* ================= NÍVEIS (1 a 100) E PEÇAS ================= */
+const MAXLVL = 100;
+const xpNeed = n => 4 + Math.floor(n/4);   // respostas certas para passar do nível n ao seguinte
+function levelOf(x){ let n = 1; while (n < MAXLVL && x >= xpNeed(n)){ x -= xpNeed(n); n++; } return {n, cur:x, need: n < MAXLVL ? xpNeed(n) : 0}; }
+const RWEIGHT = {c:60, r:30, l:10};          // comuns saem muitas vezes, lendários poucas
+const RAR = {c:['⚪','Comum','comum'], r:['💎','Raro','raro'], l:['🌟','Lendário','lendário']};
+function dropPiece(level){
+  const open = SKINS.filter(s => s.rar && (pieces[s.id] || []).length < 4);
+  if (!open.length) return null;
+  let pool = open;
+  if (level % 10 === 0){ const rare = open.filter(s => s.rar !== 'c'); if (rare.length) pool = rare; }   // de 10 em 10 níveis: raro ou lendário
+  let r = Math.random() * pool.reduce((a, s) => a + RWEIGHT[s.rar], 0), sk = pool[pool.length - 1];
+  for (const s of pool){ r -= RWEIGHT[s.rar]; if (r <= 0){ sk = s; break; } }
+  const have = pieces[sk.id] || (pieces[sk.id] = []);
+  have.push(pick([0,1,2,3].filter(q => !have.includes(q))));
+  ps.set('uni-pieces', pieces);
+  if (have.length === 4 && !unlocked.includes(sk.id)){ unlocked.push(sk.id); ps.set('uni-skins', unlocked); }
+  return {sk, n:have.length};
+}
 function win(game){
-  prog[game] = (prog[game] || 0) + 1; store.set('uni-prog', prog);
+  prog[game] = (prog[game] || 0) + 1; ps.set('uni-prog', prog);
   const sk = SKINS.find(s => s.game === game);
   if (sk && !unlocked.includes(sk.id) && prog[game] >= GOAL){
-    unlocked.push(sk.id); store.set('uni-skins', unlocked);
+    unlocked.push(sk.id); ps.set('uni-skins', unlocked);
     party('Novo unicórnio: ' + sk.name + '!', null, null, 'Desbloqueaste um unicórnio novo! ' + sk.name + '! Vai a Vestir para o usares.', sk.id);
   }
+  const before = levelOf(xp).n; xp++; ps.set('uni-xp', xp); const after = levelOf(xp).n;
+  if (after > before){
+    if (after % 10 === 1) party(`Nível ${after}! Os desafios agora são mais difíceis. ⚡`, null, '⚡', `Nível ${after}! Agora os desafios são mais difíceis. Consegues!`);
+    const d = dropPiece(after);
+    if (d && d.n === 4) party(`Nível ${after}! Completaste o unicórnio ${RAR[d.sk.rar][2]} «${d.sk.name}»!`, null, null, `Nível ${after}! Completaste um unicórnio ${RAR[d.sk.rar][2]}: ${d.sk.name}!`, d.sk.id);
+    else if (d) party(`Nível ${after}! ${RAR[d.sk.rar][0]} Peça ${d.n} de 4 de um unicórnio ${RAR[d.sk.rar][2]}.`, null, '🧩', `Nível ${after}! Ganhaste uma peça de um unicórnio ${RAR[d.sk.rar][2]}!`);
+    else party(`Nível ${after}!`, null, '⭐', `Nível ${after}! Fantástico!`);
+  }
+  paintLevel();
 }
+function paintLevel(){
+  const L = levelOf(xp); $('#lvlNum').textContent = 'Nível ' + L.n;
+  $('#lvlTier').textContent = '⚡' + (Math.min(9, Math.floor((L.n - 1)/10)) + 1);
+  $('#lvlTier').title = 'Dificuldade ' + (Math.min(9, Math.floor((L.n - 1)/10)) + 1) + ' de 10';
+  $('#xpFill').style.width = (L.need ? Math.round(100*L.cur/L.need) : 100) + '%';
+  const col = SKINS.filter(s => s.rar), pc = col.reduce((a, s) => a + (pieces[s.id] || []).length, 0);
+  $('#lvlPieces').textContent = `🧩 ${pc}/${col.length*4}`;
+}
+
+const tier = () => Math.min(9, Math.floor((levelOf(xp).n - 1)/10));
 function paintBadges(){
   document.querySelectorAll('.gbadge').forEach(b => {
     const g = b.dataset.g, sk = SKINS.find(s => s.game === g), n = Math.min(GOAL, prog[g] || 0);
@@ -785,12 +1021,13 @@ function go(id){
   let screen = id, quizId = null;
   if (id.startsWith('quiz:')){ screen = 'quiz'; quizId = id.slice(5); }
   document.querySelectorAll('.screen').forEach(s => s.hidden = s.id !== screen);
-  current = screen; ac(); hush(); stopSong();
+  current = screen; ac(); hush(); stopSong(); rgStop();
   if (screen === 'fly') startFly(); else fly.run = false;
   if (screen === 'run') startRun(); else run.on = false;
   if (screen === 'count' && !round) newRound();
   if (screen === 'dress') buildDress();
-  if (screen === 'menu'){ renderUnis(); paintBadges(); }
+  if (screen === 'menu'){ renderUnis(); paintBadges(); paintLevel(); }
+  if (screen === 'players'){ pManage = false; $('#pForm').hidden = true; renderPlayers(); }
   if (screen === 'quiz') startQuiz(quizId);
   if (screen === 'ditongos') sylRound();
   if (screen === 'musica') buildMusic();
@@ -813,7 +1050,7 @@ function sizeFly(){
   cv.width = Math.max(1, r.width*d); cv.height = Math.max(1, r.height*d); g.setTransform(d,0,0,d,0,0);
   fly.W = r.width; fly.H = r.height;
 }
-function uniSize(){ const w = Math.max(90, Math.min(170, Math.min(fly.W, fly.H)*.3)); return [w, w*187/210]; }
+function uniSize(){ const w = Math.max(90, Math.min(170, Math.min(fly.W, fly.H)*.3)); return [w, w*199/210]; }
 function startFly(){
   fly.img.src = svgURL(unicornSVG(cfg)); fly.happyImg.src = svgURL(unicornSVG(cfg, true));
   requestAnimationFrame(() => {
@@ -878,7 +1115,7 @@ function flyLoop(now){
   fly.spawn -= dt;
   if (fly.spawn <= 0){
     fly.spawn = rand(.6, 1.1);
-    fly.items.push({e:pick(TREATS), x:W + 30, by:rand(40, H-40), ph:rand(0,6), amp:rand(8,26), vx:-rand(70,120) - Math.min(fly.score,80)*.8, sz:rand(34,46)});
+    fly.items.push({e:pick(TREATS), x:W + 30, by:rand(40, H-40), ph:rand(0,6), amp:rand(8,26), vx:-rand(70,120) - tier()*12 - Math.min(fly.score,80)*.8, sz:rand(34,46)});
   }
   g.textAlign = 'center'; g.textBaseline = 'middle';
   for (const it of fly.items){
@@ -935,7 +1172,7 @@ function startRun(){
 function genMore(){
   const ahead = run.camX + run.W/run.sc + 900;
   while (run.genX < ahead){
-    const gap = ri(90, 160), w = ri(280, 640);
+    const gap = ri(90 + tier()*5, 160 + tier()*7), w = ri(280, 640);
     const y = Math.max(200, Math.min(330, run.lastY + ri(-70, 60)));
     const x = run.genX + gap;
     // estrelas em arco sobre o buraco
@@ -969,7 +1206,7 @@ function runJump(){
 rcv.addEventListener('pointerdown', e => { e.preventDefault(); runJump(); });
 function runStep(dt){
   const p = run.p; run.t += dt; run.boost = Math.max(0, run.boost - dt); run.bubble = Math.max(0, run.bubble - dt);
-  const speed = 250 + Math.min(run.t*1.2, 90) + (run.boost > 0 ? 260 : 0);
+  const speed = 250 + tier()*18 + Math.min(run.t*1.2, 90) + (run.boost > 0 ? 260 : 0);
   const prevY = p.y; p.vy = Math.min(1300, p.vy + 1900*dt); p.y += p.vy*dt; p.x += speed*dt;
   const was = p.ground; p.ground = false;
   if (p.vy >= 0) for (const pl of run.plats){
@@ -1079,8 +1316,8 @@ function drawRun(dt){
   if (run.boost > 0){ c.strokeStyle = 'rgba(255,255,255,.8)'; c.lineWidth = 2; for (let i=0;i<6;i++){ const y = rand(0,H), x = rand(0,W); c.beginPath(); c.moveTo(x,y); c.lineTo(x - 60*sc, y); c.stroke(); } }
   // unicórnio
   if (run.img.complete && p){
-    const uw = 100*sc, uh = uw*187/210, sx = (p.x - cx)*sc, footY = p.y*sc;
-    const cyy = footY - uh*.414 + (p.ground ? Math.sin(run.t*22)*2*sc : 0);
+    const uw = 100*sc, uh = uw*199/210, sx = (p.x - cx)*sc, footY = p.y*sc;
+    const cyy = footY - uh*(((114 + (SHAPES[lookOf(cfg).shape] || SHAPES.classico).leg + 24)/199) - .5) + (p.ground ? Math.sin(run.t*22)*2*sc : 0);
     c.save(); c.translate(sx, cyy); c.rotate(p.rot);
     try{ c.drawImage(run.img, -uw/2, -uh/2, uw, uh); }catch(e){}
     c.restore();
@@ -1103,20 +1340,30 @@ function swatch(bg, pressed, label, onTap){
   b.setAttribute('aria-pressed', pressed); b.setAttribute('aria-label', label);
   b.addEventListener('click', onTap); return b;
 }
-function changed(){ store.set('uni-cfg', cfg); chime(); buildDress(); happyFor('#dressUni', 1000); bounce($('#dressUni'), 'pop'); }
+function changed(){ ps.set('uni-cfg', cfg); chime(); buildDress(); happyFor('#dressUni', 1000); bounce($('#dressUni'), 'pop'); }
 function buildDress(){
   $('#dressUni').innerHTML = unicornSVG(cfg);
   const K = $('#skins'); K.innerHTML = '';
   SKINS.forEach(sk => {
-    const open = unlocked.includes(sk.id), n = Math.min(GOAL, prog[sk.game] || 0), gi = GAME_INFO[sk.game];
-    const b = document.createElement('button'); b.className = 'skin' + (open ? '' : ' locked'); b.setAttribute('aria-pressed', cfg.skin === sk.id);
-    b.innerHTML = `<div class="mini">${unicornSVG({skin:sk.id})}</div>${open ? sk.name : gi[0] + ' ' + gi[1]}<span class="pg">${open ? '✨' : n + '/' + GOAL}</span>${open ? '' : '<span class="lock">🔒</span>'}`;
+    const open = unlocked.includes(sk.id), b = document.createElement('button'), have = pieces[sk.id] || [];
+    let info, quads = '', cls = 'skin';
+    if (sk.game){ const n = Math.min(GOAL, prog[sk.game] || 0), gi = GAME_INFO[sk.game]; info = open ? '✨' : `${gi[0]} ${n}/${GOAL}`; if (!open) cls += ' locked'; }
+    else { info = `${RAR[sk.rar][0]} ${open ? RAR[sk.rar][1] : have.length + '/4'}`; cls += ' r-' + sk.rar; if (!open){ cls += ' puz'; quads = [0,1,2,3].map(q => have.includes(q) ? '' : `<i class="quad q${q}"></i>`).join(''); } }
+    b.className = cls; b.setAttribute('aria-pressed', cfg.skin === sk.id);
+    b.innerHTML = `<div class="mini">${unicornSVG({skin:sk.id})}${quads}</div>${open || sk.game || have.length ? esc(sk.name) : '???'}<span class="pg">${info}</span>`;
     b.addEventListener('click', () => {
       if (open){ cfg.skin = sk.id; changed(); say(sk.name + '!'); }
-      else { oops(); say(`Acerta ${GOAL - n} provas em ${gi[1]} para ganhar este unicórnio!`); }
+      else if (sk.game){ oops(); say(`Acerta mais provas em ${GAME_INFO[sk.game][1]} para ganhar este unicórnio!`); }
+      else { oops(); say('Sobe de nível para ganhar peças deste unicórnio!'); }
     });
     K.appendChild(b);
   });
+  const SHP = $('#swShape'), STY = $('#swStyle'); SHP.innerHTML = ''; STY.innerHTML = '';
+  const chipRow = (el, list, key) => list.forEach(([k, e, n]) => {
+    const b = document.createElement('button'); b.className = 'chip'; b.setAttribute('aria-pressed', !cfg.skin && (cfg[key] || list[0][0]) === k);
+    b.innerHTML = `<span>${e}</span>${n}`; b.addEventListener('click', () => { cfg[key] = k; cfg.skin = null; changed(); }); el.appendChild(b);
+  });
+  chipRow(SHP, SHAPE_LIST, 'shape'); chipRow(STY, STYLE_LIST, 'style');
   const B = $('#swBody'), M = $('#swMane'), H = $('#swHorn'), X = $('#swExtra');
   [B,M,H,X].forEach(el => el.innerHTML = '');
   const own = !cfg.skin;
@@ -1134,7 +1381,7 @@ function buildDress(){
   r.addEventListener('click', () => {
     if (unlocked.length && Math.random() < .35){ cfg.skin = pick(unlocked); }
     else cfg = {body:ri(0,BODY.length-1), mane:ri(0,MANE.length-1), horn:ri(0,HORN.length-1),
-           wings:Math.random()<.6, crown:Math.random()<.4, bow:Math.random()<.4, glitter:Math.random()<.5, skin:null};
+           wings:Math.random()<.6, crown:Math.random()<.4, bow:Math.random()<.4, glitter:Math.random()<.5, skin:null, shape:pick(SHAPE_LIST)[0], style:pick(STYLE_LIST)[0]};
     changed(); say('Surpresa!');
   });
   X.appendChild(r);
@@ -1143,19 +1390,20 @@ function buildDress(){
 /* ================= CONTAR ================= */
 const THINGS = [['⭐','estrelas','f'],['🍓','morangos','m'],['🧁','bolinhos','m'],['🦋','borboletas','f'],['🌸','flores','f'],
                 ['💖','corações','m'],['🍭','chupas','m'],['🎈','balões','m'],['🐞','joaninhas','f'],['🍎','maçãs','f']];
-let countMax = store.get('uni-max', 5), wins = 0, round = null, lastN = 0;
+let countMax = ps.get('uni-max', 5), wins = 0, round = null, lastN = 0;
 function paintLevels(){ document.querySelectorAll('#count .lvl').forEach(b => b.setAttribute('aria-pressed', +b.dataset.max === countMax)); }
 document.querySelectorAll('#count .lvl').forEach(b => b.addEventListener('click', () => {
-  countMax = +b.dataset.max; store.set('uni-max', countMax); wins = 0; pop(); paintLevels(); newRound();
+  countMax = +b.dataset.max; ps.set('uni-max', countMax); wins = 0; pop(); paintLevels(); newRound();
 }));
-const numOpt = o => `<b class="n">${o}</b><span class="dots">${'<i></i>'.repeat(o)}</span>`;
+const numOpt = o => `<b class="n">${o}</b>${o <= 10 ? `<span class="dots">${'<i></i>'.repeat(o)}</span>` : ''}`;
 function nearNumbers(n, lo, hi){
   const s = new Set([n]); let guard = 0;
   while (s.size < 3 && guard++ < 50){ const o = n + pick([-2,-1,1,2]); if (o >= lo && o <= hi) s.add(o); }
   return [...s].sort((a,b) => a-b);
 }
 function newRound(){
-  let n; do { n = 1 + Math.floor(Math.random()*countMax); } while (n === lastN && countMax > 1);
+  const maxN = Math.min(15, countMax + tier());
+  let n; do { n = 1 + Math.floor(Math.random()*maxN); } while (n === lastN && maxN > 1);
   lastN = n;
   const th = pick(THINGS);
   round = {n, th, counted:0, locked:false};
@@ -1175,7 +1423,7 @@ function newRound(){
     st.appendChild(b);
   }
   const A = $('#answers'); A.innerHTML = '';
-  nearNumbers(n, 1, Math.max(countMax, 6)).forEach(o => {
+  nearNumbers(n, 1, Math.max(maxN, 6)).forEach(o => {
     const b = document.createElement('button'); b.className = 'ans'; b.setAttribute('aria-label', String(o));
     b.innerHTML = `<b>${o}</b><span class="dots">${'<i></i>'.repeat(o)}</span>`;
     b.addEventListener('click', () => answer(o, b));
@@ -1272,32 +1520,71 @@ const fromList = (q, keepOrder) => ({
 });
 const GAMES = {
   contas:{ title:'Contas', levels:[['+5','➕ até 5'],['+10','➕ até 10'],['+20','➕ até 20'],['-','➖ tirar']], gen(level){
+    const T = tier(), e = pick(FRUIT), w = n => n <= 10 ? WORDS[n] : String(n);
+    const lim = {'+5':5 + T, '+10':10 + 2*T, '+20':20 + 3*T, '-':10 + 2*T}[level] || 10;
+    const types = ['op','op','op','mais'];
+    if (T >= 1) types.push('falta');
+    if (T >= 2) types.push('seq');
+    if (T >= 3) types.push('dobro');
+    const ty = pick(types), nopt = T >= 4 ? 4 : 3;
+    const opts = (r, hi, step) => {
+      const s = new Set([r]); let g = 0, st = step || 1;
+      while (s.size < nopt && g++ < 60){ const o = r + pick([-2,-1,1,2])*st; if (o >= 0 && o <= hi) s.add(o); }
+      return [...s].sort((a,b) => a-b).map(o => ({html:numOpt(o), label:String(o), ok:o === r}));
+    };
+    const grp = n => n <= 12 ? `<span class="grp">${e.repeat(n)}</span>` : '';
+    if (ty === 'mais'){
+      const top = Math.min(lim, 10); let a = ri(1, top), b; do { b = ri(1, top); } while (b === a);
+      return { text:'Qual tem mais?', speak:'Qual grupo tem mais?', keepOrder:true,
+        opts:[{html:grp(a), label:'grupo de ' + a, ok:a > b}, {html:grp(b), label:'grupo de ' + b, ok:b > a}],
+        after:() => say(`${pick(PRAISE)} ${w(Math.max(a,b))} é mais do que ${w(Math.min(a,b))}!`) };
+    }
+    if (ty === 'seq'){
+      const step = pick([1,2,2,5,10]), a0 = ri(0, 5)*step, seq = [0,1,2,3].map(k => a0 + k*step), r = a0 + 4*step;
+      return { visual:`<div class="eq">${seq.map(x => `<span class="sq">${x}</span>`).join('')}<span class="sq q">?</span></div>`,
+        text:'Que número vem a seguir?', speak:'Que número vem a seguir?', keepOrder:true, opts:opts(r, r + 3*step, step),
+        after:() => say(`${pick(PRAISE)} Contámos de ${step} em ${step}!`) };
+    }
+    if (ty === 'dobro'){
+      const n = ri(2, 5 + T), r = 2*n;
+      return { visual:n <= 10 ? `<div class="eq">${grp(n)}${grp(n)}</div>` : '', text:`O dobro de ${n} é…`, speak:`Quanto é o dobro de ${w(n)}?`, keepOrder:true,
+        opts:opts(r, r + 4), after:() => say(`${pick(PRAISE)} O dobro de ${w(n)} é ${w(r)}!`) };
+    }
+    if (ty === 'falta'){
+      const a = ri(1, lim - 1), r = ri(a + 1, lim), b = r - a;
+      return { visual:r <= 12 ? `<div class="eq">${grp(a)}<span class="op">+</span><span class="sq q">?</span><span class="op">=</span>${grp(r)}</div>` : '',
+        text:`${a} + ? = ${r}`, speak:`${w(a)} mais quanto dá ${w(r)}?`, keepOrder:true, opts:opts(b, lim),
+        after:() => say(`${pick(PRAISE)} ${w(a)} mais ${w(b)} é ${w(r)}!`) };
+    }
     let a, b, op;
-    if (level === '+5'){ a = ri(1,4); b = ri(1,5-a); op = '+'; }
-    else if (level === '+10'){ a = ri(1,9); b = ri(1,10-a); op = '+'; }
-    else if (level === '+20'){ a = ri(5,15); b = ri(1,20-a); op = '+'; }
-    else { a = ri(2,10); b = ri(1,a-1); op = '-'; }
-    const r = op === '+' ? a+b : a-b, e = pick(FRUIT);
-    const visual = op === '+'
-      ? `<div class="eq"><span class="grp">${e.repeat(a)}</span><span class="op">+</span><span class="grp">${e.repeat(b)}</span></div>`
+    if (level === '-'){ a = ri(2, lim); b = ri(1, a - 1); op = '-'; }
+    else if (level === '+20'){ a = ri(5, lim - 5); b = ri(1, lim - a); op = '+'; }
+    else { a = ri(1, lim - 1); b = ri(1, lim - a); op = '+'; }
+    const r = op === '+' ? a + b : a - b;
+    const visual = r > 20 || a > 20 ? '' : op === '+'
+      ? `<div class="eq">${grp(a)}<span class="op">+</span>${grp(b)}</div>`
       : `<div class="eq"><span class="grp">${e.repeat(a-b)}${('<span class="gone">'+e+'</span>').repeat(b)}</span></div>`;
-    const sp = `Quanto é ${WORDS[a]} ${op === '+' ? 'mais' : 'menos'} ${WORDS[b]}?`;
-    return { visual, text:`${a} ${op === '+' ? '+' : '−'} ${b} = ?`, speak:sp, keepOrder:true,
-      opts: nearNumbers(r, 0, 20).map(o => ({html:numOpt(o), label:String(o), ok:o === r})),
-      after: () => say(`${pick(PRAISE)} ${WORDS[a]} ${op === '+' ? 'mais' : 'menos'} ${WORDS[b]} é ${WORDS[r]}!`) };
+    return { visual, text:`${a} ${op === '+' ? '+' : '−'} ${b} = ?`, speak:`Quanto é ${w(a)} ${op === '+' ? 'mais' : 'menos'} ${w(b)}?`, keepOrder:true,
+      opts:opts(r, Math.max(lim, r + 2)),
+      after:() => say(`${pick(PRAISE)} ${w(a)} ${op === '+' ? 'mais' : 'menos'} ${w(b)} é ${w(r)}!`) };
   }},
   ingles:{ title:'English', levels:[['animals','🐾 Animals'],['colours','🎨 Colours'],['numbers','🔢 Numbers'],['food','🍎 Food'],['music','🎵 Music']], gen(cat){
-    const list = EN[cat] || EN.animals, it = fresh('en'+cat, list, x => x[1]);
-    const others = shuffle(list.filter(x => x !== it)).slice(0,2);
+    const T = tier(), list = EN[cat] || EN.animals, it = fresh('en'+cat, list, x => x[1]);
+    const others = shuffle(list.filter(x => x !== it)).slice(0, T >= 4 ? 3 : 2);
+    const after = () => { say(it[1] + '!', 'en'); say(it[2], 'pt', true); };
+    if (T >= 2 && Math.random() < .4){   // a partir do nível 21: ao contrário, vê a imagem e escolhe a palavra
+      const vis = cat === 'colours' ? `<span class="blob big" style="background:${it[0]}"></span>` : cat === 'numbers' ? `<span class="sq big">${it[0]}</span>` : `<span class="bigemo">${it[0]}</span>`;
+      return { visual:`<div class="eq">${vis}</div>`, text:'What is this?', speak:'What is this?', lang:'en', fact:`${it[1]} = ${it[2]}`,
+        opts:[it, ...others].map(x => ({html:`<span class="l en">${x[1]}</span>`, label:x[1], ok:x === it})), after };
+    }
     const q = cat === 'colours' ? `Where is ${it[1]}?` : cat === 'numbers' ? `Where is number ${it[1]}?` : `Where is the ${it[1]}?`;
     const html = x => cat === 'colours' ? `<span class="blob" style="background:${x[0]}"></span>` : cat === 'numbers' ? numOpt(x[0]) : optE(x[0]);
     return { text:q.replace(it[1], `<b>${it[1]}</b>`), speak:q, lang:'en', fact:`${it[1]} = ${it[2]}`,
-      opts:[it, ...others].map(x => ({html:html(x), label:x[1], ok:x === it})),
-      after: () => { say(it[1] + '!', 'en'); say(it[2], 'pt', true); } };
+      opts:[it, ...others].map(x => ({html:html(x), label:x[1], ok:x === it})), after };
   }},
   palco:{ title:'Teatro e Orquestra', gen(){
     if (Math.random() < .5){
-      const it = fresh('palcoI', STAGE_ITEMS, x => x[0]), others = shuffle(STAGE_ITEMS.filter(x => x !== it)).slice(0,2);
+      const it = fresh('palcoI', STAGE_ITEMS, x => x[0]), others = shuffle(STAGE_ITEMS.filter(x => x !== it)).slice(0, tier() >= 4 ? 3 : 2);
       const q = (it[2] ? 'Onde estão ' : 'Onde está ') + it[1] + '?';
       return { text:q, speak:q, fact:it[3], opts:[it, ...others].map(x => ({html:optE(x[0]), label:x[1], ok:x === it})) };
     }
@@ -1309,7 +1596,7 @@ const quiz = {id:null, level:null, wins:0, cur:null, locked:false, onNext:null};
 function startQuiz(id){
   quiz.id = GAMES[id] ? id : 'contas'; const G = GAMES[quiz.id];
   $('#quizTitle').textContent = G.title;
-  quiz.level = store.get('lvl-'+quiz.id, G.levels ? G.levels[0][0] : null); quiz.wins = 0;
+  quiz.level = ps.get('lvl-'+quiz.id, G.levels ? G.levels[0][0] : null); quiz.wins = 0;
   $('#quizUni').innerHTML = unicornSVG(cfg);
   paintQuizLevels(); quizNext();
 }
@@ -1317,7 +1604,7 @@ function paintQuizLevels(){
   const G = GAMES[quiz.id], el = $('#quizLevels'); el.innerHTML = ''; el.hidden = !G.levels; if (!G.levels) return;
   G.levels.forEach(([k, label]) => {
     const b = document.createElement('button'); b.className = 'lvl'; b.textContent = label; b.setAttribute('aria-pressed', k === quiz.level);
-    b.addEventListener('click', () => { quiz.level = k; store.set('lvl-'+quiz.id, k); quiz.wins = 0; pop(); paintQuizLevels(); quizNext(); });
+    b.addEventListener('click', () => { quiz.level = k; ps.set('lvl-'+quiz.id, k); quiz.wins = 0; pop(); paintQuizLevels(); quizNext(); });
     el.appendChild(b);
   });
 }
@@ -1353,50 +1640,110 @@ function quizAnswer(o, b){
 $('#qNext').addEventListener('click', () => { pop(); const f = quiz.onNext; quiz.onNext = null; if (f) f(); });
 
 /* ================= DITONGOS ================= */
-// [imagem, sílabas, sílaba com o ditongo, ditongo] — ditongos do 1.º ano: iu, ui, oi, ou, ai, au, eu, ei, ão, ãe
+// [imagem, sílabas, sílaba com o ditongo, ditongo, nota de Portugal / Europa / cidadania]
+// Ditongos do 1.º ano: iu, ui, oi, ou, ai, au, eu, ei, ão, ãe. A voz só lê palavras inteiras e frases.
 const DITO = [
-  ['🐟',['PEI','XE'],0,'EI'],['🥕',['CE','NOU','RA'],1,'OU'],['🧦',['MEI','A'],0,'EI'],['🐂',['TOU','RO'],0,'OU'],
-  ['🪑',['CA','DEI','RA'],1,'EI'],['🚩',['BAN','DEI','RA'],1,'EI'],['🏛️',['MU','SEU'],1,'EU'],['🌙',['NOI','TE'],0,'OI'],
-  ['🥬',['COU','VE'],0,'OU'],['📦',['CAI','XA'],0,'AI'],['👩‍🦰',['RUI','VA'],0,'UI'],['🚌',['AU','TO','CAR','RO'],0,'AU'],
-  ['🏃',['FU','GIU'],1,'IU'],['🦁',['LE','ÃO'],1,'ÃO'],['✈️',['A','VI','ÃO'],2,'ÃO'],['🎈',['BA','LÃO'],1,'ÃO'],
-  ['🍋',['LI','MÃO'],1,'ÃO'],['🚚',['CA','MI','ÃO'],2,'ÃO'],['❤️',['CO','RA','ÇÃO'],2,'ÃO'],['🧼',['SA','BÃO'],1,'ÃO'],
-  ['👨',['PAI'],0,'AI'],['👩‍👧',['MÃE'],0,'ÃE'],['🍞',['PÃO'],0,'ÃO'],['🐶',['CÃO'],0,'ÃO'],['🥖',['PÃES'],0,'ÃE'],['8️⃣',['OI','TO'],0,'OI']
+  ['🏰',['LEI','RI','A'],0,'EI','Leiria é uma cidade de Portugal com um castelo no alto de um monte.'],
+  ['⛵',['A','VEI','RO'],1,'EI','Em Aveiro há barcos coloridos chamados moliceiros.'],
+  ['⛪',['VI','SEU'],1,'EU','Viseu é uma cidade do centro de Portugal.'],
+  ['🏝️',['MA','DEI','RA'],1,'EI','A Madeira é uma ilha portuguesa no oceano Atlântico.'],
+  ['🌊',['CAS','CAIS'],1,'AI','Cascais fica à beira-mar, perto de Lisboa.'],
+  ['🏞️',['DOU','RO'],0,'OU','O Douro é um rio que atravessa Portugal até ao Porto.'],
+  ['🏯',['GUI','MA','RÃES'],2,'ÃE','Guimarães é chamada o berço de Portugal.'],
+  ['☀️',['LOU','LÉ'],0,'OU','Loulé fica no Algarve, no sul de Portugal.'],
+  ['🇪🇺',['EU','RO','PA'],0,'EU','A bandeira da Europa tem 12 estrelas douradas em círculo.'],
+  ['💶',['EU','RO'],0,'EU','O euro é o dinheiro de Portugal e de muitos países da Europa.'],
+  ['🇵🇹',['BAN','DEI','RA'],1,'EI','A bandeira de Portugal é verde e vermelha.'],
+  ['🎼',['CAN','ÇÃO'],1,'ÃO','O hino da Europa é a Ode à Alegria, de Beethoven.'],
+  ['🧑‍🚒',['BOM','BEI','RO'],1,'EI','Numa emergência, em toda a Europa, liga 112.'],
+  ['🧑‍⚕️',['EN','FER','MEI','RA'],2,'EI','A enfermeira cuida de nós quando estamos doentes.'],
+  ['🥖',['PA','DEI','RO'],1,'EI','O padeiro acorda muito cedo para fazer o pão.'],
+  ['📬',['CAR','TEI','RO'],1,'EI','O carteiro entrega as cartas em todas as casas.'],
+  ['📮',['COR','REI','O'],1,'EI','Para enviar uma carta pelo correio precisamos de um selo.'],
+  ['🧑‍🍳',['CO','ZI','NHEI','RO'],2,'EI','O cozinheiro prepara refeições saudáveis.'],
+  ['🌳',['JAR','DI','NEI','RO'],2,'EI','O jardineiro cuida das plantas do jardim.'],
+  ['🗑️',['CAI','XO','TE'],0,'AI','No ecoponto: papel no azul, embalagens no amarelo, vidro no verde.'],
+  ['⚠️',['CUI','DA','DO'],0,'UI','Antes de atravessar a rua, olha para os dois lados.'],
+  ['📜',['LEI'],0,'EI','As leis são regras que ajudam todos a viver em paz.'],
+  ['👑',['REI'],0,'EI','Portugal já teve reis. Hoje tem um Presidente da República.'],
+  ['🧑‍🤝‍🧑',['CI','DA','DÃO'],2,'ÃO','Um cidadão tem direitos e deveres, como respeitar os outros.'],
+  ['🏛️',['MU','SEU'],1,'EU','No museu aprendemos arte e história. Fala baixinho!'],
+  ['🧼',['SA','BÃO'],1,'ÃO','Lava as mãos com sabão antes de comer.'],
+  ['🔷',['A','ZU','LEI','JO'],2,'EI','Os azulejos decoram muitas casas e estações em Portugal.'],
+  ['🐟',['BA','CA','LHAU'],2,'AU','O bacalhau é um peixe muito comido em Portugal.'],
+  ['🧀',['QUEI','JO'],0,'EI','O queijo da Serra da Estrela é feito em Portugal.'],
+  ['🍒',['CE','REI','JA'],1,'EI','As cerejas do Fundão são famosas.'],
+  ['🪗',['A','COR','DE','ÃO'],3,'ÃO','O acordeão anima as festas populares portuguesas.'],
+  ['🦔',['OU','RI','ÇO'],0,'OU','O ouriço-cacheiro vive nos campos de Portugal.'],
+  ['🍂',['OU','TO','NO'],0,'OU','No outono as folhas caem e assam-se castanhas.'],
+  ['🏖️',['PRAI','A'],0,'AI','Na praia usa protetor solar e chapéu.'],
+  ['⏳',['A','REI','A'],1,'EI','A areia é feita de pedrinhas muito pequenas.'],
+  ['🥬',['COU','VE'],0,'OU','A couve é usada no caldo verde, uma sopa portuguesa.'],
+  ['🐠',['PEI','XE'],0,'EI','Portugal tem muito mar e muitos peixes.'],
+  ['🥕',['CE','NOU','RA'],1,'OU','A cenoura é um legume cor de laranja.'],
+  ['🧦',['MEI','A'],0,'EI','As meias andam sempre aos pares.'],
+  ['🪑',['CA','DEI','RA'],1,'EI','Na escola sentamo-nos direitos na cadeira.'],
+  ['🌙',['NOI','TE'],0,'OI','À noite dormimos para crescer com saúde.'],
+  ['8️⃣',['OI','TO'],0,'OI','Oito é o dobro de quatro.'],
+  ['📦',['CAI','XA'],0,'AI','As caixas podem ser reutilizadas para brincar.'],
+  ['👩‍🦰',['RUI','VA'],0,'UI','Cada pessoa é diferente e todas merecem respeito.'],
+  ['🚌',['AU','TO','CAR','RO'],0,'AU','No autocarro dá o lugar a quem precisa.'],
+  ['🏃',['FU','GIU'],1,'IU','O gato fugiu para o telhado!'],
+  ['✈️',['A','VI','ÃO'],2,'ÃO','De avião podemos visitar outros países da Europa.'],
+  ['🎈',['BA','LÃO'],1,'ÃO','O balão sobe porque tem um gás mais leve do que o ar.'],
+  ['🍋',['LI','MÃO'],1,'ÃO','O limão é azedo e tem vitamina C.'],
+  ['🚚',['CA','MI','ÃO'],2,'ÃO','O camião leva comida para as lojas.'],
+  ['❤️',['CO','RA','ÇÃO'],2,'ÃO','O coração bate mais depressa quando corremos.'],
+  ['🦁',['LE','ÃO'],1,'ÃO','O leão vive em África, longe da Europa.'],
+  ['👨',['PAI'],0,'AI','A família cuida de nós.'],
+  ['👩‍👧',['MÃE'],0,'ÃE','A família cuida de nós.'],
+  ['🍞',['PÃO'],0,'ÃO','O pão faz-se com farinha, água e fermento.'],
+  ['🐶',['CÃO'],0,'ÃO','Um cão precisa de passear, comer e de carinho.'],
+  ['🥐',['PÃES'],0,'ÃE','Na padaria há pães de muitas formas.']
 ];
 const DGS = ['AI','AU','EI','EU','IU','OI','OU','UI','ÃO','ÃE'];
-const syl = {level:store.get('dit-lvl', 'build'), wins:0, w:null, pos:0, locked:false, hintT:0};
-if (!['build','find'].includes(syl.level)) syl.level = 'build';
+const DIT_MODES = ['build','find','pic'];
+const syl = {level:ps.get('dit-lvl', 'build'), wins:0, w:null, pos:0, locked:false, hintT:0};
+if (!DIT_MODES.includes(syl.level)) syl.level = 'build';
 const wordOf = w => w[1].join('').toLowerCase();
 const hl = (s, dg) => s.replace(dg, `<u>${dg}</u>`);
 const wordHTML = w => w[1].map((s,i) => i === w[2] ? hl(s, w[3]) : s).join('');
 function paintSylLevels(){ document.querySelectorAll('#sylLevels .lvl').forEach(b => b.setAttribute('aria-pressed', b.dataset.l === syl.level)); }
 document.querySelectorAll('#sylLevels .lvl').forEach(b => b.addEventListener('click', () => {
-  syl.level = b.dataset.l; store.set('dit-lvl', syl.level); syl.wins = 0; pop(); sylRound();
+  syl.level = b.dataset.l; ps.set('dit-lvl', syl.level); syl.wins = 0; pop(); sylRound();
 }));
 function sylRound(){
   paintSylLevels(); stars($('#sylProgress'), syl.wins);
+  const T3 = tier();
   const pool = syl.level === 'build' ? DITO.filter(w => w[1].length > 1) : DITO;
   const w = fresh('dit'+syl.level, pool, x => wordOf(x));
   syl.w = w; syl.pos = 0; syl.locked = false; clearTimeout(syl.hintT);
-  $('#sylPic').textContent = w[0]; $('#sylWord').innerHTML = '';
+  $('#sylPic').textContent = w[0]; $('#sylWord').innerHTML = ''; $('#sylFact').textContent = '';
   const T = $('#tiles'); T.innerHTML = '';
+  const tile = (html, cls, fn) => { const b = document.createElement('button'); b.className = 'tile' + (cls ? ' ' + cls : ''); b.innerHTML = html; b.addEventListener('click', () => fn(b)); T.appendChild(b); return b; };
   if (syl.level === 'build'){
     $('#slots').innerHTML = w[1].map(() => '<div class="slot"></div>').join('');
-    shuffle(w[1].map((_, i) => i)).forEach(i => {
-      const s = w[1][i], b = document.createElement('button');
-      b.className = 'tile' + (i === w[2] ? ' dg' : ''); b.innerHTML = i === w[2] ? hl(s, w[3]) : s;
-      b.addEventListener('click', () => sylTap(s, b)); T.appendChild(b);
-    });
+    const items = w[1].map((s, i) => [s, i]);
+    if (T3 >= 2){   // a partir do nível 21: uma sílaba a mais para baralhar
+      const extra = shuffle([].concat(...DITO.map(x => x[1])).filter(s => !w[1].includes(s)))[0];
+      if (extra) items.push([extra, -1]);
+    }
+    shuffle(items).forEach(([s, i]) => tile(i === w[2] ? hl(s, w[3]) : s, i === w[2] ? 'dg' : '', b => sylTap(s, b)));
     armHint();
     setTimeout(() => { if (current === 'ditongos') say(wordOf(w)); }, 300);
-  } else {
+  } else if (syl.level === 'find'){
     const i = w[2], sy = w[1][i], k = sy.indexOf(w[3]);
     const pre = w[1].slice(0, i).join('') + sy.slice(0, k), suf = sy.slice(k + w[3].length) + w[1].slice(i+1).join('');
     $('#slots').innerHTML = (pre ? `<div class="slot fixed">${pre}</div>` : '') + '<div class="slot gap" id="gap">?</div>' + (suf ? `<div class="slot fixed">${suf}</div>` : '');
-    shuffle([w[3], ...shuffle(DGS.filter(d => d !== w[3])).slice(0, 2)]).forEach(d => {
-      const b = document.createElement('button'); b.className = 'tile dg'; b.textContent = d;
-      b.addEventListener('click', () => findTap(d, b)); T.appendChild(b);
-    });
+    shuffle([w[3], ...shuffle(DGS.filter(d => d !== w[3])).slice(0, T3 >= 4 ? 3 : 2)]).forEach(d => tile(d, 'dg', b => findTap(d, b)));
     setTimeout(() => { if (current === 'ditongos') say(wordOf(w) + '. Qual é o ditongo?'); }, 300);
+  } else {
+    // Qual imagem tem este ditongo?
+    $('#sylPic').textContent = '❓';
+    $('#slots').innerHTML = `<div class="slot gap full"><u>${w[3]}</u></div>`;
+    const others = shuffle(DITO.filter(x => !x[1].join('').includes(w[3]))).slice(0, T3 >= 4 ? 3 : 2);
+    shuffle([w, ...others]).forEach(x => tile(x[0], 'pict', b => picTap(x, b)));
+    setTimeout(() => { if (current === 'ditongos') say('Qual destas imagens tem este ditongo?'); }, 300);
   }
 }
 function armHint(){
@@ -1406,15 +1753,16 @@ function armHint(){
     const need = syl.w[1][syl.pos];
     const t = [...document.querySelectorAll('.tile:not(.used)')].find(x => x.textContent === need);
     if (t) t.classList.add('hint');
-  }, 7000);
+  }, 7000 + tier()*1500);
 }
 function finishWord(){
   const w = syl.w;
   syl.locked = true; clearTimeout(syl.hintT); syl.wins++; stars($('#sylProgress'), syl.wins); win('ditongos');
-  // A voz só diz palavras inteiras: sílabas e ditongos soltos são mal pronunciados pelos telemóveis.
+  $('#sylPic').textContent = w[0];
   $('#sylWord').innerHTML = wordHTML(w) + `<span class="dgnote">ditongo <u>${w[3]}</u></span>`; bounce($('#sylPic'), 'pop');
-  setTimeout(() => { fanfare(); say(`${wordOf(w)}! ${pick(PRAISE)}`); }, 500);
-  setTimeout(() => { if (syl.wins >= 5) party('Já conheces os ditongos!', () => { syl.wins = 0; sylRound(); }); else sylRound(); }, 3600);
+  $('#sylFact').textContent = w[4] ? '💡 ' + w[4] : '';
+  const next = () => { if (current !== 'ditongos' || syl.w !== w) return; if (syl.wins >= 5) party('Já conheces os ditongos!', () => { syl.wins = 0; sylRound(); }); else sylRound(); };
+  setTimeout(() => { fanfare(); sayThen(`${wordOf(w)}! ${pick(PRAISE)} ${w[4] || ''}`, () => setTimeout(next, 1200)); }, 500);
 }
 function sylTap(s, b){
   if (syl.locked || b.classList.contains('used')) return;
@@ -1422,7 +1770,7 @@ function sylTap(s, b){
   if (s === need){
     b.classList.add('used'); const slot = $('#slots').children[syl.pos];
     slot.innerHTML = syl.pos === w[2] ? hl(s, w[3]) : s; slot.classList.add('full');
-    syl.pos++; tone(PENTA[syl.pos], 0, .3, 'triangle', .16);
+    syl.pos++; tone(PENTA[Math.min(syl.pos, PENTA.length-1)], 0, .3, 'triangle', .16);
     if (syl.pos >= w[1].length) finishWord(); else armHint();
   } else { bounce(b, 'wrong'); oops(); }
 }
@@ -1431,142 +1779,435 @@ function findTap(d, b){
   if (d === syl.w[3]){ const g = $('#gap'); g.innerHTML = `<u>${d}</u>`; g.classList.add('full'); tone(1047, 0, .3, 'triangle', .16); finishWord(); }
   else { bounce(b, 'wrong'); oops(); say('Tenta outra vez!'); }
 }
-$('#sylPic').addEventListener('click', () => { if (syl.w) say(wordOf(syl.w)); });
+function picTap(x, b){
+  if (syl.locked) return;
+  if (x === syl.w){ tone(1047, 0, .3, 'triangle', .16); finishWord(); }
+  else { bounce(b, 'wrong'); oops(); say(wordOf(x) + '. Tenta outra vez!'); }
+}
+$('#sylPic').addEventListener('click', () => { if (syl.w && $('#sylPic').textContent !== '❓') say(wordOf(syl.w)); });
 
 /* ================= MÚSICA ================= */
-const NOTES = [['Dó',261.63,'#ff6b6b'],['Ré',293.66,'#ffa94d'],['Mi',329.63,'#ffd43b'],['Fá',349.23,'#69db7c'],
-               ['Sol',392.00,'#4dabf7'],['Lá',440.00,'#748ffc'],['Si',493.88,'#da77f2'],['Dó',523.25,'#ff8cc6']];
+const NOTE_PT = {C:'Dó',D:'Ré',E:'Mi',F:'Fá',G:'Sol',A:'Lá',B:'Si'};
+const NOTE_COL = {C:'#ff5c5c',D:'#ff9f43',E:'#f2b705',F:'#34c26a',G:'#3fa9f5',A:'#6c7ff0',B:'#b866e8'};
+const SEMI = {C:0,D:2,E:4,F:5,G:7,A:9,B:11};
+const WHITE = [['G',3],['A',3],['B',3],['C',4],['D',4],['E',4],['F',4],['G',4],['A',4],['B',4],['C',5],['D',5],['E',5],['F',5],['G',5],['A',5]]
+  .map(([L,o]) => ({L, o, name:NOTE_PT[L], col:NOTE_COL[L], f:440*Math.pow(2, (12*(o+1) + SEMI[L] - 69)/12)}));
+const wIdx = n => WHITE.findIndex(w => w.L === n.L && w.o === n.o);
+// Notação: maiúscula = oitava central, minúscula = oitava acima, vírgula = oitava abaixo.
+// Número = tempos (2 = mínima, 4 = semibreve, /2 = colcheia, 3/2 = semínima com ponto). z = pausa.
+function parseABC(s){
+  const out = [], re = /([A-Ga-gz])([,']*)(\d+)?(\/(\d+)?)?/g; let m;
+  while ((m = re.exec(s))){
+    const num = m[3] ? +m[3] : 1, den = m[4] ? (m[5] ? +m[5] : 2) : 1, d = num/den;
+    if (m[1] === 'z'){ out.push({r:true, d}); continue; }
+    let o = m[1] === m[1].toLowerCase() ? 5 : 4;
+    for (const ch of m[2]) o += ch === ',' ? -1 : 1;
+    out.push({L:m[1].toUpperCase(), o, d});
+  }
+  return out;
+}
+const FIG_NAME = {4:'semibreve',3:'mínima com ponto',2:'mínima',1.5:'semínima com ponto',1:'semínima',.75:'colcheia com ponto',.5:'colcheia',.25:'semicolcheia'};
+function figSVG(d, rest){
+  let s = '<svg viewBox="0 0 28 40" class="fig" aria-hidden="true">';
+  if (rest){
+    if (d >= 2){ const y = d >= 4 ? 14 : 18; s += `<line x1="3" y1="${d >= 4 ? 14 : 24}" x2="25" y2="${d >= 4 ? 14 : 24}" stroke="currentColor" stroke-width="2"/><rect x="7" y="${y}" width="14" height="6" fill="currentColor"/>`; }
+    else if (d >= 1) s += `<path d="M10 5 L17 13 L11 20 L18 28 Q9 25 13 35" stroke="currentColor" stroke-width="3" fill="none" stroke-linejoin="round" stroke-linecap="round"/>`;
+    else s += `<circle cx="10" cy="14" r="3.6" fill="currentColor"/><path d="M10 15 Q16 17 20 10 L13 35" stroke="currentColor" stroke-width="2.6" fill="none"/>`;
+    return s + '</svg>';
+  }
+  const hollow = d >= 2, stem = d < 4, flags = d <= .375 ? 2 : d <= .75 ? 1 : 0, dot = [3,1.5,.75].includes(d);
+  s += `<ellipse cx="10" cy="31" rx="7" ry="5" transform="rotate(-20 10 31)" fill="${hollow ? 'none' : 'currentColor'}" stroke="currentColor" stroke-width="2.6"/>`;
+  if (stem) s += `<line x1="16.4" y1="29" x2="16.4" y2="3" stroke="currentColor" stroke-width="2.6"/>`;
+  for (let k=0;k<flags;k++) s += `<path d="M16.4 ${3+k*7} q9 5 6 14" stroke="currentColor" stroke-width="2.6" fill="none"/>`;
+  if (dot) s += `<circle cx="24" cy="31" r="2.6" fill="currentColor"/>`;
+  return s + '</svg>';
+}
 const INSTS = [
   ['piano','🎹','Piano','O piano tem 88 teclas. Quando tocas numa tecla, um martelinho bate numa corda.'],
-  ['violino','🎻','Violino','O violino toca-se com um arco. É o instrumento que há em maior número na orquestra.'],
-  ['trompete','🎺','Trompete','O trompete é de metal. Toca-se a soprar e a vibrar os lábios.'],
-  ['flauta','🌬️','Flauta','A flauta toca-se a soprar. Pertence à família das madeiras.'],
-  ['xilofone','🔔','Xilofone','O xilofone toca-se a bater com baquetas. É da família da percussão.']
+  ['violino','🎻','Violino','O violino é da família das cordas. Toca-se com um arco e há muitos numa orquestra.'],
+  ['flauta','🌬️','Flauta','A flauta é da família das madeiras e toca-se a soprar.'],
+  ['trompete','🎺','Trompete','O trompete é da família dos metais. Sopra-se a vibrar os lábios.'],
+  ['xilofone','🔔','Xilofone','O xilofone é da família da percussão, mas toca notas. Usa-se baquetas.']
 ];
+const SONG_CATS = [['inf','🧸','Canções infantis'],['eur','🇪🇺','Viagem pela Europa'],['nat','🎄','Natal'],['cla','🎻','Grandes compositores'],['exe','🪜','Exercícios']];
+const S = (t, o, c, bpm, ts, n, f) => ({t, o, c, bpm, ts, n, f});
 const SONGS = [
-  ['livre','🎵','Livre',null,''],
-  ['brilha','⭐','Brilha, brilha','0 0 4 4 5 5 4 3 3 2 2 1 1 0 4 4 3 3 2 2 1 4 4 3 3 2 2 1 0 0 4 4 5 5 4 3 3 2 2 1 1 0','Uma canção de embalar muito antiga, que até Mozart usou numa das suas obras.'],
-  ['alegria','🎶','Ode à Alegria','2 2 3 4 4 3 2 1 0 0 1 2 2 1 1 2 2 3 4 4 3 2 1 0 0 1 2 1 0 0','Beethoven compôs esta música para uma grande orquestra e um coro.'],
-  ['escala','🪜','Dó Ré Mi','0 1 2 3 4 5 6 7 7 6 5 4 3 2 1 0','As sete notas são Dó, Ré, Mi, Fá, Sol, Lá e Si.']
+  // Canções infantis (tradicionais, domínio público)
+  S('Brilha, brilha, estrelinha','🇫🇷 França','inf',100,'4/4','C C G G | A A G2 | F F E E | D D C2 | G G F F | E E D2 | G G F F | E E D2 | C C G G | A A G2 | F F E E | D D C2','Melodia francesa antiga. Mozart escreveu variações sobre ela.'),
+  S('Todos os patinhos','🇩🇪 Alemanha','inf',110,'4/4','C D E F | G2 G2 | A A A A | G4 | A A A A | G4 | F F F F | E2 E2 | D D D D | C4','Canção tradicional alemã, cantada em muitas línguas.'),
+  S('Maria tinha um cordeirinho','🇺🇸 EUA','inf',110,'4/4','E D C D | E E E2 | D D D2 | E G G2 | E D C D | E E E E | D D E D | C4','Usa só três notas no início: Mi, Ré e Dó.'),
+  S('Parabéns a você','🇺🇸 EUA','inf',100,'3/4','G3/4 G/4 | A G c | B2 G3/4 G/4 | A G d | c2 G3/4 G/4 | g e c | B A f3/4 f/4 | e c d | c2','É a canção mais cantada do mundo! Tem compasso de valsa: 1-2-3.'),
+  S('A quinta do velho MacDonald','🇺🇸 EUA','inf',120,'4/4','C C C G, | A, A, G,2 | E E D D | C3 G, | C C C G, | A, A, G,2 | E E D D | C4','Cada estrofe tem um animal diferente.'),
+  S('Pãezinhos quentes','🇬🇧 Inglaterra','inf',100,'4/4','E D C2 | E D C2 | C/2 C/2 C/2 C/2 D/2 D/2 D/2 D/2 | E D C2','Ótima para aprender as colcheias: duas por tempo.'),
+  S('Rema, rema','🇬🇧 Inglaterra','inf',90,'6/8','C3/2 C3/2 | C D/2 E3/2 | E D/2 E F/2 | G3 | c/2 c/2 c/2 G/2 G/2 G/2 | E/2 E/2 E/2 C/2 C/2 C/2 | G F/2 E D/2 | C3','Em compasso 6/8 a música balança como um barco.'),
+  S('Alouette','🇨🇦 Canadá','inf',120,'4/4','C C/2 D/2 E E | D/2 C/2 D/2 E/2 C G, | C C/2 D/2 E E | D/2 C/2 D/2 E/2 C2','Canção em francês do Canadá.'),
+  S('Oh! Susana','🇺🇸 EUA','inf',120,'4/4','C/2 D/2 | E G G3/2 A/2 | G E C3/2 D/2 | E E D C | D3 C/2 D/2 | E G G3/2 A/2 | G E C3/2 D/2 | E E D D | C3 z | F2 A2 | A2 G G | E C D2 | z3 C/2 D/2 | E G G3/2 A/2 | G E C3/2 D/2 | E E D D | C3','Escrita por Stephen Foster em 1848.'),
+  S('Clementina','🇺🇸 EUA','inf',110,'3/4','C/2 C/2 | C G, E/2 E/2 | E C C/2 E/2 | G3/2 G/2 F/2 E/2 | D2 D/2 E/2 | F F E/2 D/2 | E C C/2 E/2 | D3/2 G,/2 B,/2 D/2 | C2','Canção tradicional em compasso de valsa.'),
+  S('Quando os santos vão marchar','🇺🇸 EUA','inf',140,'4/4','z C E F | G4 | z C E F | G4 | z C E F | G2 E2 | C2 E2 | D4 | z E E D | C3 C | E2 G2 | G F3 | z E F G | E2 C2 | D4 | C4','Muito tocada pelas bandas de jazz de Nova Orleães.'),
+  S('Graça maravilhosa','🇬🇧 Inglaterra','inf',80,'3/4','G, | C2 E/2 C/2 | E2 D | C2 A, | G,2 G, | C2 E/2 C/2 | E2 D/2 E/2 | G3 | z2 E/2 G/2 | G2 E/2 C/2 | E2 D | C2 A, | G,2 G, | C2 E/2 C/2 | E2 D | C3','Melodia calma, em compasso de três tempos.'),
+  S('Yankee Doodle','🇺🇸 EUA','inf',120,'4/4','C C D E | C E D G, | C C D E | C2 B,2 | C C D E | F E D C | B, G, A, B, | C2 C2','Canção de marcha muito antiga.'),
+  // Viagem pela Europa
+  S('Hino da Europa (Ode à Alegria)','🇪🇺 União Europeia','eur',110,'4/4','E E F G | G F E D | C C D E | E3/2 D/2 D2 | E E F G | G F E D | C C D E | D3/2 C/2 C2 | D D E C | D E/2 F/2 E C | D E/2 F/2 E D | C D G,2 | E E F G | G F E D | C C D E | D3/2 C/2 C2','Composta por Beethoven. É o hino da União Europeia, a que Portugal pertence.'),
+  S('Frei João (cânone)','🇫🇷 França','eur',110,'4/4','C D E C | C D E C | E F G2 | E F G2 | G/2 A/2 G/2 F/2 E C | G/2 A/2 G/2 F/2 E C | C G, C2 | C G, C2','É um cânone: um grupo começa e o outro entra mais tarde.'),
+  S('Ao luar','🇫🇷 França','eur',100,'4/4','C C C D | E2 D2 | C E D D | C4 | C C C D | E2 D2 | C E D D | C4 | D D D D | A,2 A,2 | D C B, A, | G,4 | C C C D | E2 D2 | C E D D | C4','Canção de embalar francesa, «Au clair de la lune».'),
+  S('Na ponte de Avinhão','🇫🇷 França','eur',120,'4/4','C C C2 | D D D2 | E F G C | B, C D G, | C C C2 | D D D2 | E F G C | D B, C2','Fala de uma ponte antiga na cidade de Avinhão, em França.'),
+  S('Joãozinho','🇩🇪 Alemanha','eur',110,'4/4','G E E2 | F D D2 | C D E F | G G G2 | G E E2 | F D D2 | C E G G | C4 | D D D D | D E F2 | E E E E | E F G2 | G E E2 | F D D2 | C E G G | C4','Canção alemã «Hänschen klein», sobre um menino que vai ver o mundo.'),
+  S('Ó meu querido Augustin','🇦🇹 Áustria','eur',130,'3/4','G3/4 A/4 G F | E C C | D G, G, | E C C | G3/4 A/4 G F | E C C | D G, G, | C3','Canção de Viena, em compasso de valsa.'),
+  S('A ponte de Londres','🇬🇧 Inglaterra','eur',110,'4/4','G3/2 A/2 G F | E F G2 | D E F2 | E F G2 | G3/2 A/2 G F | E F G2 | D2 G2 | E2 C2','A ponte de Londres atravessa o rio Tamisa.'),
+  S('Canção do adeus','🏴 Escócia','eur',80,'4/4','G, | C3/2 C/2 C E | D3/2 C/2 D E | C3/2 C/2 E G | A3 A | G3/2 E/2 E C | D3/2 C/2 D E | C3/2 A,/2 A, G, | C3','Na Escócia canta-se na passagem de ano, de mãos dadas.'),
+  S('Korobeiniki','🇷🇺 Rússia','eur',140,'4/4','e B/2 c/2 d c/2 B/2 | A A/2 c/2 e d/2 c/2 | B3/2 c/2 d e | c A A2 | d3/2 f/2 a g/2 f/2 | e3/2 c/2 e d/2 c/2 | B B/2 c/2 d e | c A A2','Canção popular russa sobre vendedores ambulantes.'),
+  // Natal
+  S('Noite feliz','🇦🇹 Áustria','nat',80,'3/4','G3/2 A/2 G | E3 | G3/2 A/2 G | E3 | d2 d | B3 | c2 c | G3 | A2 A | c3/2 B/2 A | G3/2 A/2 G | E3 | A2 A | c3/2 B/2 A | G3/2 A/2 G | E3 | d2 d | f3/2 d/2 B | c3 | e3 | c G E | G3/2 F/2 D | C3','Cantada pela primeira vez na Áustria, em 1818.'),
+  S('Jingle Bells','🇺🇸 EUA','nat',120,'4/4','E E E2 | E E E2 | E G C3/2 D/2 | E4 | F F F3/2 F/2 | F E E E/2 E/2 | E D D E | D2 G2 | E E E2 | E E E2 | E G C3/2 D/2 | E4 | F F F F | F E E E/2 E/2 | G G F D | C4','Fala dos sininhos de um trenó na neve.'),
+  S('Desejamos-vos um feliz Natal','🇬🇧 Inglaterra','nat',120,'3/4','G, | C C/2 D/2 C/2 B,/2 | A, A, A, | D D/2 E/2 D/2 C/2 | B, G, G, | E E/2 F/2 E/2 D/2 | C A, G,/2 G,/2 | A, D B, | C2','Canção de Natal inglesa muito antiga.'),
+  S('Enfeitem a casa','🏴 País de Gales','nat',110,'4/4','G3/2 F/2 E D | C D E C | D/2 E/2 F/2 D/2 E3/2 D/2 | C B, C2 | G3/2 F/2 E D | C D E C | D/2 E/2 F/2 D/2 E3/2 D/2 | C B, C2','Melodia do País de Gales, «Deck the Halls».'),
+  S('Alegria para o mundo','🇬🇧 Inglaterra','nat',100,'4/4','c2 B3/2 A/2 | G3 F | E2 D2 | C3 G | A3 A | B3 B | c3 c | c B A G | G3/2 F/2 E c | c B A G | G3/2 F/2 E E | E E E E/2 F/2 | G3 F/2 E/2 | D D D D/2 E/2 | F3 E/2 D/2 | C c2 A | G3/2 F/2 E F | E2 D2 | C4','Começa com a escala de Dó a descer!'),
+  S('O bom rei Venceslau','🇫🇮 Finlândia','nat',110,'4/4','C C C D | C C G,2 | A, G, A, B, | C2 C2 | C C C D | C C G,2 | A, G, A, B, | C2 C2','A melodia vem de um livro de canções da Finlândia de 1582.'),
+  // Grandes compositores
+  S('Canção de embalar (Brahms)','🇩🇪 Alemanha','cla',70,'3/4','E/2 E/2 | G2 E/2 E/2 | G2 E/2 G/2 | c B3/2 A/2 | A G D/2 E/2 | F D D/2 E/2 | F2 D/2 F/2 | B/2 A/2 G B | c2','Johannes Brahms escreveu-a para o bebé de uma amiga.'),
+  S('Pequena serenata (Mozart)','🇦🇹 Áustria','cla',120,'4/4','c z/2 G/2 c z/2 G/2 | c/2 G/2 c/2 e/2 g2 | f z/2 d/2 f z/2 d/2 | f/2 d/2 B/2 d/2 G2','Mozart compôs esta serenata em Viena, em 1787.'),
+  S('5.ª Sinfonia (Beethoven)','🇩🇪 Alemanha','cla',100,'2/4','z/2 e/2 e/2 e/2 | c2 | z/2 d/2 d/2 d/2 | B2','Três notas curtas e uma longa: o motivo mais famoso da música clássica.'),
+  S('Minueto (Petzold)','🇩🇪 Alemanha','cla',110,'3/4','G C/2 D/2 E/2 F/2 | G C C | A F/2 G/2 A/2 B/2 | c C C | F G/2 F/2 E/2 D/2 | E F/2 E/2 D/2 C/2 | B, C/2 D/2 E/2 C/2 | D3','O minueto é uma dança elegante em três tempos.'),
+  S('Sinfonia «A Surpresa» (Haydn)','🇦🇹 Áustria','cla',100,'2/4','C/2 C/2 E/2 E/2 | G/2 G/2 E | F/2 F/2 D/2 D/2 | B,/2 B,/2 G, | C/2 C/2 E/2 E/2 | G/2 G/2 c | z2','Começa baixinho e depois a orquestra toca muito forte, para acordar quem dorme!'),
+  S('Sinfonia do Novo Mundo (Dvořák)','🇨🇿 Chéquia','cla',60,'4/4','E3/2 G/2 G2 | E3/2 D/2 C2 | D E G E | D4 | E3/2 G/2 G2 | E3/2 D/2 C2 | D E D C | C4','Antonín Dvořák era checo e escreveu esta sinfonia na América.'),
+  // Exercícios
+  S('Dó, Ré, Mi','🪜 Exercício','exe',90,'4/4','C D E2 | E D C2 | C D E D | C4','Três notas vizinhas: Dó, Ré e Mi.'),
+  S('Cinco dedos','🪜 Exercício','exe',90,'4/4','C D E F | G4 | G F E D | C4','Um dedo para cada nota: o polegar fica no Dó.'),
+  S('Sobe a escada','🪜 Exercício','exe',90,'4/4','C D E F | G A B c | c4','A escala de Dó tem 8 notas, do Dó grave ao Dó agudo.'),
+  S('Desce a escada','🪜 Exercício','exe',90,'4/4','c B A G | F E D C | C4','Agora a escala de Dó a descer.'),
+  S('Escala de Dó completa','🪜 Exercício','exe',100,'4/4','C D E F | G A B c | c B A G | F E D C | C4','Sobe e desce sem parar.'),
+  S('Arpejo de Dó','🪜 Exercício','exe',90,'4/4','C E G c | c G E C | C4','Um arpejo são as notas de um acorde tocadas uma de cada vez.'),
+  S('Arpejo de Fá','🪜 Exercício','exe',90,'4/4','F A c2 | c A F2 | F4','O acorde de Fá: Fá, Lá e Dó.'),
+  S('Arpejo de Sol','🪜 Exercício','exe',90,'4/4','G, B, D G | G D B, G, | G,4','O acorde de Sol: Sol, Si e Ré.'),
+  S('Escala de Lá menor','🪜 Exercício','exe',90,'4/4','A, B, C D | E F G A | A G F E | D C B, A, | A,4','Usa as mesmas teclas brancas, mas soa mais triste.'),
+  S('Escala pentatónica','🪜 Exercício','exe',90,'4/4','C D E G | A c A G | E D C2','Tem 5 notas e é usada em canções de todo o mundo.'),
+  S('Terceiras','🪜 Exercício','exe',90,'4/4','C E D F | E G F A | G B A c | c4','Salta uma tecla de cada vez.'),
+  S('Saltos de oitava','🪜 Exercício','exe',90,'4/4','C c C c | G, G G, G | C4','Uma oitava é o salto até à mesma nota, mais aguda.'),
+  S('Sol–Mi (cuco)','🪜 Exercício','exe',90,'4/4','G E G E | G G E2 | G G E E | G E2 z','Sol e Mi: as primeiras notas que as crianças cantam.'),
+  S('Sol–Mi–Lá','🪜 Exercício','exe',90,'4/4','G E A G | E2 z2 | G G A A | G E2 z','Junta o Lá ao Sol e ao Mi.'),
+  S('Ritmo: semínimas','🪜 Exercício','exe',90,'4/4','C C C C | E E E E | G G G G | c4','A semínima vale 1 tempo.'),
+  S('Ritmo: mínimas','🪜 Exercício','exe',90,'4/4','C2 E2 | G2 c2 | c2 G2 | C4','A mínima vale 2 tempos.'),
+  S('Ritmo: semibreves','🪜 Exercício','exe',90,'4/4','C4 | E4 | G4 | c4','A semibreve vale 4 tempos.'),
+  S('Ritmo: colcheias','🪜 Exercício','exe',90,'4/4','C/2 C/2 D/2 D/2 E/2 E/2 F/2 F/2 | G2 G2 | E/2 E/2 D/2 D/2 C2 | C4','Duas colcheias valem o mesmo que uma semínima.'),
+  S('Ritmo: notas com ponto','🪜 Exercício','exe',90,'4/4','C3/2 D/2 E3/2 F/2 | G2 G2 | A3/2 G/2 F3/2 E/2 | D2 C2','O ponto aumenta metade do valor da nota.'),
+  S('Ritmo: pausas','🪜 Exercício','exe',90,'4/4','C z E z | G z c z | c z G z | C2 z2','A pausa é um silêncio que também conta tempo.'),
+  S('Valsa (3/4)','🪜 Exercício','exe',110,'3/4','C E G | C E G | D F A | G3 | B, D G | C E G | D F A | C3','Na valsa contamos 1-2-3, com mais força no 1.'),
+  S('Marcha (2/4)','🪜 Exercício','exe',110,'2/4','C C | G G | E E | C2 | D D | B, B, | C D | C2','Na marcha contamos 1-2, como os passos: esquerdo, direito.'),
+  S('Pergunta e resposta','🪜 Exercício','exe',90,'4/4','C D E G | E2 z2 | G E D C | C2 z2','A primeira frase pergunta e a segunda responde.'),
+  S('Notas graves','🪜 Exercício','exe',90,'4/4','G, A, B, C | B, A, G,2 | G, B, D B, | G,4','As notas da esquerda são graves (sons grossos).'),
+  S('Notas agudas','🪜 Exercício','exe',90,'4/4','c d e f | g f e2 | e d c d | c4','As notas da direita são agudas (sons finos).'),
+  S('Terceiras a descer','🪜 Exercício','exe',90,'4/4','c A B G | A F G E | F D E C | C4','Agora as terceiras a descer.')
 ];
-const PADS = [['tambor','🥁','Tambor'],['prato','✨','Prato'],['maracas','🎊','Maracas'],['palmas','👏','Palmas']];
-const mus = {inst:store.get('mus-inst','piano'), song:'livre', seq:null, pos:0, ok:0, playing:false, timers:[], built:false};
+SONGS.forEach(s => s.seq = parseABC(s.n));
+
+const mus = {tab:'tocar', inst:ps.get('mus-inst','piano'), song:null, pos:0, ok:0, playing:false, timers:[], lo:3, hi:10, built:false};
 let NB = null;
 function noiseSrc(a){
   if (!NB){ NB = a.createBuffer(1, a.sampleRate, a.sampleRate); const d = NB.getChannelData(0); for (let i=0;i<d.length;i++) d[i] = Math.random()*2-1; }
   const s = a.createBufferSource(); s.buffer = NB; return s;
 }
-function playNote(f, inst){
+function playNote(f, inst, len, vol){
   if (!soundOn) return; const a = ac(); if (!a) return;
+  len = Math.max(.12, len || .5); const v = vol == null ? 1 : vol;
   const t = a.currentTime, g = a.createGain(); g.connect(a.destination);
   const osc = (type, fr) => { const o = a.createOscillator(); o.type = type; o.frequency.value = fr; return o; };
   const vib = (o, depth, rate) => { const l = osc('sine', rate), lg = a.createGain(); lg.gain.value = depth; l.connect(lg); lg.connect(o.frequency); return l; };
-  let srcs = [], dur = 1;
+  const hold = t + len*.9;
+  let srcs = [], end;
   g.gain.setValueAtTime(.0001, t);
   if (inst === 'violino'){
     const o = osc('sawtooth', f), lp = a.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 2400;
     o.connect(lp); lp.connect(g); const l = vib(o, f*.012, 5.5);
-    g.gain.linearRampToValueAtTime(.14, t+.15); g.gain.setValueAtTime(.14, t+.6); g.gain.exponentialRampToValueAtTime(.0001, t+1.1);
-    srcs = [o, l]; dur = 1.2;
+    g.gain.linearRampToValueAtTime(.14*v, t+.08); g.gain.setValueAtTime(.14*v, hold); end = hold + .25; g.gain.exponentialRampToValueAtTime(.0001, end);
+    srcs = [o, l];
   } else if (inst === 'trompete'){
     const o = osc('sawtooth', f), lp = a.createBiquadFilter(); lp.type = 'lowpass';
-    lp.frequency.setValueAtTime(500, t); lp.frequency.linearRampToValueAtTime(2600, t+.08); lp.frequency.linearRampToValueAtTime(1500, t+.5);
+    lp.frequency.setValueAtTime(500, t); lp.frequency.linearRampToValueAtTime(2600, t+.06); lp.frequency.linearRampToValueAtTime(1600, hold);
     o.connect(lp); lp.connect(g);
-    g.gain.linearRampToValueAtTime(.2, t+.05); g.gain.setValueAtTime(.17, t+.45); g.gain.exponentialRampToValueAtTime(.0001, t+.8);
-    srcs = [o]; dur = .9;
+    g.gain.linearRampToValueAtTime(.2*v, t+.04); g.gain.setValueAtTime(.17*v, hold); end = hold + .15; g.gain.exponentialRampToValueAtTime(.0001, end);
+    srcs = [o];
   } else if (inst === 'flauta'){
     const o = osc('sine', f*2); o.connect(g); const l = vib(o, f*.01, 5);
     const n = noiseSrc(a), bp = a.createBiquadFilter(), ng = a.createGain(); bp.type = 'bandpass'; bp.frequency.value = f*2; bp.Q.value = 3; ng.gain.value = .06;
     n.connect(bp); bp.connect(ng); ng.connect(g);
-    g.gain.linearRampToValueAtTime(.22, t+.08); g.gain.setValueAtTime(.2, t+.5); g.gain.exponentialRampToValueAtTime(.0001, t+.9);
-    srcs = [o, l, n]; dur = 1;
+    g.gain.linearRampToValueAtTime(.22*v, t+.06); g.gain.setValueAtTime(.2*v, hold); end = hold + .2; g.gain.exponentialRampToValueAtTime(.0001, end);
+    srcs = [o, l, n];
   } else if (inst === 'xilofone'){
     const o1 = osc('sine', f*2), o2 = osc('sine', f*8), g2 = a.createGain(); g2.gain.value = .12;
     o1.connect(g); o2.connect(g2); g2.connect(g);
-    g.gain.linearRampToValueAtTime(.35, t+.003); g.gain.exponentialRampToValueAtTime(.0001, t+.7);
-    srcs = [o1, o2]; dur = .8;
+    g.gain.linearRampToValueAtTime(.35*v, t+.003); end = t + .7; g.gain.exponentialRampToValueAtTime(.0001, end);
+    srcs = [o1, o2];
   } else {
     const o1 = osc('triangle', f), o2 = osc('sine', f*2), g2 = a.createGain(); g2.gain.value = .3;
     o1.connect(g); o2.connect(g2); g2.connect(g);
-    g.gain.linearRampToValueAtTime(.35, t+.006); g.gain.exponentialRampToValueAtTime(.0001, t+1.4);
-    srcs = [o1, o2]; dur = 1.5;
+    g.gain.linearRampToValueAtTime(.35*v, t+.006); end = t + Math.max(.6, len*1.6); g.gain.exponentialRampToValueAtTime(.0001, end);
+    srcs = [o1, o2];
   }
-  srcs.forEach(s => { s.start(t); s.stop(t+dur); });
+  srcs.forEach(s => { s.start(t); s.stop(end + .05); });
 }
-function drum(kind){
-  if (!soundOn) return; const a = ac(); if (!a) return; const t = a.currentTime;
-  const hit = (filterType, freq, q, vol, dec, at) => {
-    const n = noiseSrc(a), f = a.createBiquadFilter(), gg = a.createGain(); f.type = filterType; f.frequency.value = freq; f.Q.value = q;
+function drum(kind, vol){
+  if (!soundOn) return; const a = ac(); if (!a) return; const t = a.currentTime, v = vol == null ? 1 : vol;
+  const hit = (type, freq, q, peak, dec, at) => {
+    const n = noiseSrc(a), f = a.createBiquadFilter(), gg = a.createGain(); f.type = type; f.frequency.value = freq; f.Q.value = q;
     n.connect(f); f.connect(gg); gg.connect(a.destination);
-    gg.gain.setValueAtTime(.0001, at); gg.gain.linearRampToValueAtTime(vol, at+.002); gg.gain.exponentialRampToValueAtTime(.0001, at+dec);
+    gg.gain.setValueAtTime(.0001, at); gg.gain.linearRampToValueAtTime(peak*v, at+.002); gg.gain.exponentialRampToValueAtTime(.0001, at+dec);
     n.start(at); n.stop(at+dec+.05);
   };
-  if (kind === 'tambor'){
-    const o = a.createOscillator(), gg = a.createGain(); o.frequency.setValueAtTime(160, t); o.frequency.exponentialRampToValueAtTime(45, t+.3);
-    o.connect(gg); gg.connect(a.destination); gg.gain.setValueAtTime(.0001, t); gg.gain.linearRampToValueAtTime(.9, t+.003); gg.gain.exponentialRampToValueAtTime(.0001, t+.45);
-    o.start(t); o.stop(t+.5); hit('lowpass', 900, 1, .25, .1, t);
-  } else if (kind === 'prato') hit('highpass', 6000, .7, .35, 1.3, t);
+  const thump = (f0, f1, peak, dec) => {
+    const o = a.createOscillator(), gg = a.createGain(); o.frequency.setValueAtTime(f0, t); o.frequency.exponentialRampToValueAtTime(f1, t+dec*.7);
+    o.connect(gg); gg.connect(a.destination); gg.gain.setValueAtTime(.0001, t); gg.gain.linearRampToValueAtTime(peak*v, t+.003); gg.gain.exponentialRampToValueAtTime(.0001, t+dec);
+    o.start(t); o.stop(t+dec+.05);
+  };
+  const ring = (fs, peak, dec) => fs.forEach(fr => {
+    const o = a.createOscillator(), gg = a.createGain(); o.frequency.value = fr; o.connect(gg); gg.connect(a.destination);
+    gg.gain.setValueAtTime(.0001, t); gg.gain.linearRampToValueAtTime(peak*v, t+.002); gg.gain.exponentialRampToValueAtTime(.0001, t+dec);
+    o.start(t); o.stop(t+dec+.05);
+  });
+  if (kind === 'tambor'){ thump(170, 60, .9, .4); hit('lowpass', 900, 1, .25, .1, t); }
+  else if (kind === 'bombo') thump(90, 40, 1, .7);
+  else if (kind === 'caixa'){ thump(200, 150, .35, .12); hit('bandpass', 2500, .8, .6, .18, t); }
+  else if (kind === 'prato') hit('highpass', 6000, .7, .35, 1.4, t);
+  else if (kind === 'triangulo') ring([2600, 3900, 5400], .07, 1.6);
   else if (kind === 'maracas') hit('bandpass', 7000, 1, .5, .09, t);
-  else [0, .025, .05].forEach(d => hit('bandpass', 1400, 1.5, .55, .08, t+d));
+  else if (kind === 'pandeireta'){ hit('highpass', 7500, 1, .4, .25, t); ring([4200, 5600], .03, .25); thump(220, 120, .25, .1); }
+  else if (kind === 'palmas') [0, .025, .05].forEach(dd => hit('bandpass', 1400, 1.5, .55, .08, t+dd));
+  else if (kind === 'tick') ring([1600], .14, .05);
+}
+const PADS = [['tambor','🥁','Tambor'],['bombo','🛢️','Bombo'],['caixa','⚡','Caixa'],['prato','✨','Pratos'],
+              ['triangulo','🔺','Triângulo'],['maracas','🎊','Maracas'],['pandeireta','🌀','Pandeireta'],['palmas','👏','Palmas']];
+
+function musSched(ms, fn){ mus.timers.push(setTimeout(fn, ms)); }
+function stopSong(){ mus.timers.forEach(clearTimeout); mus.timers = []; mus.playing = false; if (mus.built) markNext(); }
+function skipRests(){ const q = mus.song && mus.song.seq; while (q && mus.pos < q.length && q[mus.pos].r) mus.pos++; }
+function songWindow(){
+  if (!mus.song){ mus.lo = 3; mus.hi = 10; return; }
+  const idx = mus.song.seq.filter(n => !n.r).map(wIdx);
+  let lo = Math.min(...idx), hi = Math.max(...idx);
+  while (hi - lo < 7){ if (hi < WHITE.length - 1) hi++; else lo--; }
+  mus.lo = lo; mus.hi = hi;
 }
 function buildMusic(){
+  document.querySelectorAll('#musTabs .lvl').forEach(b => b.setAttribute('aria-pressed', b.dataset.t === mus.tab));
+  $('#musTocar').hidden = mus.tab !== 'tocar'; $('#musRitmo').hidden = mus.tab !== 'ritmo'; $('#musAprender').hidden = mus.tab !== 'aprender';
   const IC = $('#instChips'); IC.innerHTML = '';
   INSTS.forEach(i => {
     const b = document.createElement('button'); b.className = 'lvl'; b.textContent = i[1] + ' ' + i[2]; b.setAttribute('aria-pressed', i[0] === mus.inst);
-    b.addEventListener('click', () => { mus.inst = i[0]; store.set('mus-inst', i[0]); buildMusic(); playNote(392, i[0]); say(i[3]); });
+    b.addEventListener('click', () => { mus.inst = i[0]; ps.set('mus-inst', i[0]); buildMusic(); playNote(392, i[0], .6); say(i[3]); });
     IC.appendChild(b);
   });
-  $('#instFactText').textContent = '💡 ' + INSTS.find(i => i[0] === mus.inst)[3];
-  const SC = $('#songChips'); SC.innerHTML = '';
-  SONGS.forEach(s => {
-    const b = document.createElement('button'); b.className = 'lvl'; b.textContent = s[1] + ' ' + s[2]; b.setAttribute('aria-pressed', s[0] === mus.song);
-    b.addEventListener('click', () => { stopSong(); mus.song = s[0]; mus.seq = s[3] ? s[3].split(' ').map(Number) : null; mus.pos = 0; pop(); buildMusic(); if (s[4]) say(s[4] + ' Segue a estrela!'); });
-    SC.appendChild(b);
-  });
-  if (mus.seq){
-    const b = document.createElement('button'); b.className = 'lvl'; b.textContent = '👂 Ouvir';
-    b.addEventListener('click', listenSong); SC.appendChild(b);
-  }
-  if (!mus.built){
-    const K = $('#keys');
-    NOTES.forEach((n, i) => {
-      const k = document.createElement('button'); k.className = 'key'; k.style.setProperty('--k', n[2]); k.innerHTML = `<span>${n[0]}</span>`; k.setAttribute('aria-label', n[0]);
-      k.addEventListener('pointerdown', e => { e.preventDefault(); pressKey(i); });
-      K.appendChild(k);
-    });
-    const P = $('#pads');
-    PADS.forEach(p => {
-      const b = document.createElement('button'); b.className = 'pad'; b.innerHTML = `<span>${p[1]}</span>${p[2]}`;
-      b.addEventListener('pointerdown', e => { e.preventDefault(); drum(p[0]); b.classList.add('down'); setTimeout(() => b.classList.remove('down'), 120); });
-      P.appendChild(b);
-    });
-    mus.built = true;
+  $('#songName').textContent = mus.song ? mus.song.t : 'Tocar livre (escolhe uma música)';
+  $('#songListen').hidden = !mus.song;
+  const inst = INSTS.find(i => i[0] === mus.inst);
+  $('#songFactText').textContent = mus.song ? `💡 ${mus.song.f} (${mus.song.o} · compasso ${mus.song.ts})` : '💡 ' + inst[3];
+  renderKeys(); renderStrip();
+  if (!mus.built){ buildPads(); buildConcepts(); mus.built = true; }
+  paintRG();
+}
+function renderKeys(){
+  songWindow();
+  const K = $('#keys'); K.innerHTML = ''; K.classList.toggle('many', mus.hi - mus.lo > 9);
+  for (let i = mus.lo; i <= mus.hi; i++){
+    const w = WHITE[i], k = document.createElement('button'); k.className = 'key'; k.dataset.i = i;
+    k.style.setProperty('--k', w.col); k.innerHTML = `<span>${w.name}</span>`; k.setAttribute('aria-label', w.name);
+    k.addEventListener('pointerdown', e => { e.preventDefault(); pressKey(i); });
+    K.appendChild(k);
   }
   markNext();
 }
-function flashKey(i){ const k = $('#keys').children[i]; k.classList.add('down'); setTimeout(() => k.classList.remove('down'), 160); }
+function renderStrip(from){
+  const R = $('#noteStrip'), q = mus.song && mus.song.seq;
+  if (!q){ R.innerHTML = '<span class="rhint">🎵 Toca à vontade, ou escolhe uma música e segue a estrela ⭐</span>'; return; }
+  const start = from == null ? mus.pos : from; let h = '';
+  for (let j = start; j < Math.min(q.length, start + 7); j++){
+    const n = q[j], col = n.r ? '#7b68a0' : NOTE_COL[n.L];
+    h += `<div class="nc${j === start ? ' now' : ''}" style="--k:${col}" title="${n.r ? 'pausa' : NOTE_PT[n.L]} · ${FIG_NAME[n.d] || ''}">${figSVG(n.d, n.r)}<b>${n.r ? 'pausa' : NOTE_PT[n.L]}</b></div>`;
+  }
+  R.innerHTML = h;
+}
+function flashKey(i){ const k = document.querySelector(`#keys .key[data-i="${i}"]`); if (!k) return; k.classList.add('down'); setTimeout(() => k.classList.remove('down'), 160); }
 function markNext(){
-  [...$('#keys').children].forEach((k, i) => k.classList.toggle('next', !!mus.seq && !mus.playing && mus.seq[mus.pos] === i));
+  const q = mus.song && mus.song.seq, target = q && !mus.playing && q[mus.pos] && !q[mus.pos].r ? wIdx(q[mus.pos]) : -1;
+  document.querySelectorAll('#keys .key').forEach(k => k.classList.toggle('next', +k.dataset.i === target));
 }
 function pressKey(i){
-  ac(); playNote(NOTES[i][1], mus.inst); flashKey(i);
-  if (!mus.seq || mus.playing) return;
-  if (mus.seq[mus.pos] === i){
+  ac(); const q = mus.song && mus.song.seq;
+  const len = q && q[mus.pos] && !q[mus.pos].r ? q[mus.pos].d*60/mus.song.bpm : .5;
+  playNote(WHITE[i].f, mus.inst, len); flashKey(i);
+  if (!q || mus.playing) return;
+  if (wIdx(q[mus.pos]) === i){
     mus.pos++; mus.ok++; if (mus.ok % 8 === 0) win('musica');
-    if (mus.pos >= mus.seq.length){
-      mus.pos = 0; markNext();
-      setTimeout(() => party('Tocaste a música toda!', () => markNext()), 700);
+    skipRests();
+    if (mus.pos >= q.length){
+      mus.pos = 0; skipRests(); markNext(); renderStrip();
+      setTimeout(() => party('Tocaste «' + mus.song.t + '»!', () => { markNext(); renderStrip(); }), 700);
       return;
     }
   }
-  markNext();
+  markNext(); renderStrip();
 }
 function listenSong(){
-  if (!mus.seq) return; stopSong(); mus.playing = true; markNext();
-  mus.seq.forEach((n, j) => mus.timers.push(setTimeout(() => { playNote(NOTES[n][1], mus.inst); flashKey(n); }, j*450)));
-  mus.timers.push(setTimeout(() => { mus.playing = false; mus.pos = 0; markNext(); }, mus.seq.length*450 + 300));
+  if (!mus.song) return; stopSong(); mus.playing = true; markNext();
+  const q = mus.song.seq, beat = 60/mus.song.bpm; let t = 0;
+  q.forEach((n, j) => {
+    const at = t;
+    musSched(at*1000, () => { if (!n.r){ playNote(WHITE[wIdx(n)].f, mus.inst, n.d*beat); flashKey(wIdx(n)); } renderStrip(j); });
+    t += n.d*beat;
+  });
+  musSched(t*1000 + 400, () => { mus.playing = false; mus.pos = 0; skipRests(); markNext(); renderStrip(); });
 }
-function stopSong(){ mus.timers.forEach(clearTimeout); mus.timers = []; if (mus.playing){ mus.playing = false; markNext(); } }
+$('#songListen').addEventListener('click', () => { pop(); listenSong(); });
+document.querySelectorAll('#musTabs .lvl').forEach(b => b.addEventListener('click', () => { stopSong(); rgStop(); mus.tab = b.dataset.t; pop(); buildMusic(); }));
+
+/* lista de músicas */
+function openSongs(){
+  const B = $('#sheetBody'); let h = `<button class="songrow${!mus.song ? ' cur' : ''}" data-s="-1">🎵 Tocar livre<small>sem música</small></button>`;
+  SONG_CATS.forEach(([c, e, name]) => {
+    const list = SONGS.map((s, i) => [s, i]).filter(([s]) => s.c === c);
+    h += `<h4>${e} ${name} <small>(${list.length})</small></h4>`;
+    list.forEach(([s, i]) => h += `<button class="songrow${mus.song === s ? ' cur' : ''}" data-s="${i}">${esc(s.t)}<small>${s.o} · ${s.seq.filter(n => !n.r).length} notas</small></button>`);
+  });
+  B.innerHTML = h; $('#songSheet').hidden = false;
+  B.querySelectorAll('.songrow').forEach(b => b.addEventListener('click', () => {
+    const i = +b.dataset.s; stopSong(); mus.song = i < 0 ? null : SONGS[i]; mus.pos = 0; skipRests();
+    $('#songSheet').hidden = true; pop(); buildMusic();
+    if (mus.song) say(mus.song.t + '. Segue a estrela!');
+  }));
+}
+$('#songPick').addEventListener('click', openSongs);
+$('#sheetClose').addEventListener('click', () => { $('#songSheet').hidden = true; });
+$('#songSheet').addEventListener('click', e => { if (e.target.id === 'songSheet') $('#songSheet').hidden = true; });
+
+/* ================= RITMO (percussão) ================= */
+const RG = {mode:'eco', tempo:95, lvl:ps.get('rg-lvl', 0), phase:'idle', timers:[], taps:[], expect:[], beats:[], marks:[]};
+const PATTERNS = [[1,1,1,1],[2,2],[1,1,2],[2,1,1],[.5,.5,1,1,1],[1,1,.5,.5,1],[1,-1,1,1],[.5,.5,.5,.5,2],[1.5,.5,1,1],
+                  [.5,.5,1,.5,.5,1],[1,.5,.5,2],[3,1],[1,-1,.5,.5,1],[.5,.5,.5,.5,.5,.5,1],[1.5,.5,1.5,.5]];
+function buildPads(){
+  const P = $('#pads'); P.innerHTML = '';
+  PADS.forEach(p => {
+    const b = document.createElement('button'); b.className = 'pad'; b.innerHTML = `<span>${p[1]}</span>${p[2]}`;
+    b.addEventListener('pointerdown', e => { e.preventDefault(); drum(p[0]); b.classList.add('down'); setTimeout(() => b.classList.remove('down'), 120); });
+    P.appendChild(b);
+  });
+}
+function rgStop(){ RG.timers.forEach(clearTimeout); RG.timers = []; RG.phase = 'idle'; }
+function rgAt(ms, fn){ RG.timers.push(setTimeout(fn, ms)); }
+function paintRG(){
+  const M = $('#rgModes'); M.innerHTML = '';
+  [['eco','🔁 Repete o ritmo'],['pulse','🫀 Segue a pulsação']].forEach(([k, l]) => {
+    const b = document.createElement('button'); b.className = 'lvl'; b.textContent = l; b.setAttribute('aria-pressed', RG.mode === k);
+    b.addEventListener('click', () => { rgStop(); RG.mode = k; pop(); paintRG(); }); M.appendChild(b);
+  });
+  const T = $('#rgTempo'); T.innerHTML = '';
+  [[70,'🐢 Lento'],[95,'🚶 Moderado'],[125,'🐇 Rápido']].forEach(([v, l]) => {
+    const b = document.createElement('button'); b.className = 'lvl'; b.textContent = l; b.setAttribute('aria-pressed', RG.tempo === v);
+    b.addEventListener('click', () => { rgStop(); RG.tempo = v; pop(); paintRG(); }); T.appendChild(b);
+  });
+  rgStripPaint();
+  if (RG.phase === 'idle') $('#rgMsg').textContent = RG.mode === 'eco'
+    ? `Nível ${RG.lvl + 1} de ${PATTERNS.length}: ouve o ritmo e repete-o no tambor.`
+    : 'Toca no tambor ao mesmo tempo que a pulsação, 8 vezes.';
+}
+function rgStripPaint(now){
+  const R = $('#rgStrip');
+  if (RG.mode === 'eco'){
+    R.innerHTML = PATTERNS[RG.lvl].map((d, j) => `<div class="nc${j === now ? ' now' : ''}" style="--k:${d < 0 ? '#7b68a0' : '#d94a8a'}">${figSVG(Math.abs(d), d < 0)}<b>${d < 0 ? 'pausa' : FIG_NAME[d]}</b></div>`).join('');
+  } else {
+    R.innerHTML = Array.from({length:8}, (_, j) => `<div class="pdot ${RG.marks[j] || ''}${j === now ? ' now' : ''}"></div>`).join('');
+  }
+}
+function countIn(beat, done){
+  [0,1,2,3].forEach(k => rgAt(k*beat, () => { drum('tick'); $('#rgMsg').textContent = ['1','2','3','4'].slice(0, k+1).join('  ') + (k === 3 ? '  …' : ''); }));
+  rgAt(4*beat, done);
+}
+function rgStart(){
+  if (RG.phase !== 'idle') return; ac(); hush();
+  const beat = 60000/RG.tempo; RG.taps = []; RG.marks = [];
+  if (RG.mode === 'eco'){
+    RG.phase = 'demo'; const pat = PATTERNS[RG.lvl];
+    countIn(beat, () => {
+      $('#rgMsg').textContent = '👂 Ouve…'; let t = 0; RG.expect = [];
+      pat.forEach((d, j) => { const at = t; if (d > 0) RG.expect.push(at); rgAt(at, () => { if (d > 0) drum('tambor'); rgStripPaint(j); }); t += Math.abs(d)*beat; });
+      rgAt(t + 300, () => { RG.phase = 'listen'; RG.taps = []; rgStripPaint(); $('#rgMsg').textContent = '🥁 Agora tu! Toca no tambor.'; rgAt(t*2 + 4000, rgEval); });
+    });
+  } else {
+    RG.phase = 'count'; rgStripPaint();
+    countIn(beat, () => {
+      RG.phase = 'pulse'; $('#rgMsg').textContent = '🫀 Toca com a pulsação!'; const t0 = performance.now(); RG.beats = [];
+      for (let j=0;j<8;j++){ RG.beats.push(t0 + j*beat); rgAt(j*beat, () => { drum('tick', .8); rgStripPaint(j); }); }
+      rgAt(8*beat + 200, rgEval);
+    });
+  }
+}
+function rgEval(){
+  if (RG.phase !== 'listen' && RG.phase !== 'pulse') return;
+  const beat = 60000/RG.tempo, tol = Math.max(130, beat*.28);
+  RG.timers.forEach(clearTimeout); RG.timers = [];
+  let ok;
+  if (RG.mode === 'eco'){
+    const e = RG.expect, a = RG.taps;
+    ok = a.length === e.length && e.every((x, j) => Math.abs((a[j] - a[0]) - (x - e[0])) <= tol);
+  } else {
+    let hits = 0;
+    RG.marks = RG.beats.map(b => { const near = RG.taps.some(x => Math.abs(x - b) <= tol); if (near) hits++; return near ? 'hit' : 'miss'; });
+    ok = hits >= 6; rgStripPaint();
+    $('#rgMsg').textContent = `Acertaste ${hits} de 8.`;
+  }
+  RG.phase = 'idle';
+  if (ok){
+    fanfare(); win('musica');
+    if (RG.mode === 'eco'){ RG.lvl = Math.min(RG.lvl + 1, PATTERNS.length - 1); ps.set('rg-lvl', RG.lvl); }
+    const m = RG.mode === 'eco' ? '⭐ Ritmo certo! Muito bem!' : '⭐ Que boa pulsação!';
+    setTimeout(() => { paintRG(); $('#rgMsg').textContent = m; }, 50); say(m.replace('⭐ ', ''));
+  } else {
+    oops(); const m = RG.mode === 'eco' ? 'Quase! Ouve outra vez e tenta de novo.' : ' Quase! Ouve bem o tique-taque.';
+    if (RG.mode === 'eco') $('#rgMsg').textContent = m; else $('#rgMsg').textContent += m;
+    say(m.trim());
+  }
+}
+$('#rgStart').addEventListener('click', () => { pop(); rgStart(); });
+$('#bigDrum').addEventListener('pointerdown', e => {
+  e.preventDefault(); drum('tambor'); bounce($('#bigDrum'), 'pop');
+  if (RG.phase === 'listen'){ RG.taps.push(performance.now()); if (RG.taps.length >= RG.expect.length) setTimeout(rgEval, 250); }
+  else if (RG.phase === 'pulse') RG.taps.push(performance.now());
+});
+
+/* ================= APRENDER (conceitos) ================= */
+function sayThen(text, fn){
+  let done = false; const go = () => { if (done) return; done = true; fn(); };
+  if (!soundOn || !('speechSynthesis' in window)){ go(); return; }
+  try{
+    speechSynthesis.cancel(); const u = new SpeechSynthesisUtterance(text); u.lang = 'pt-PT'; if (voice) u.voice = voice;
+    u.rate = .95; u.pitch = 1.2; u.onend = go; u.onerror = go; speechSynthesis.speak(u);
+  }catch(e){ go(); }
+  musSched(9000, go);
+}
+const beats = (list, bpm) => { const b = 60000/bpm; let t = 0; list.forEach(([d, fn]) => { const at = t; musSched(at, fn); t += d*b; }); };
+const N = (L, o) => WHITE[wIdx({L, o})].f;
+const CONCEPTS = [
+  ['🫀','Pulsação','A pulsação é como o coração da música: um bater regular, sempre igual.', () => beats(Array(8).fill([1, () => drum('tambor')]), 90)],
+  ['🔁','Ritmo','O ritmo junta sons curtos e longos. É o desenho da música no tempo.', () => beats([[1,()=>drum('tambor')],[.5,()=>drum('tambor')],[.5,()=>drum('tambor')],[1,()=>drum('tambor')],[1,()=>drum('tambor')],[.5,()=>drum('tambor')],[.5,()=>drum('tambor')],[.5,()=>drum('tambor')],[.5,()=>drum('tambor')],[2,()=>drum('tambor')]], 100), [1,.5,.5,1]],
+  ['🐢','Andamento','O andamento é a velocidade: lento (adágio) ou rápido (alegro).', () => { beats(Array(4).fill([1, () => drum('tambor')]), 60); musSched(4200, () => beats(Array(8).fill([1, () => drum('tambor')]), 160)); }],
+  ['🔊','Dinâmica','Forte é tocar com força. Piano é tocar suave, baixinho.', () => { beats(Array(4).fill([1, () => drum('tambor', 1)]), 100); musSched(2600, () => beats(Array(4).fill([1, () => drum('tambor', .15)]), 100)); }],
+  ['🎼','Figuras musicais','Semibreve vale 4 tempos, mínima 2, semínima 1 e colcheia meio tempo.', () => beats([[4,()=>playNote(N('C',4),'piano',2)],[2,()=>playNote(N('C',4),'piano',1)],[2,()=>playNote(N('C',4),'piano',1)],[1,()=>playNote(N('C',4),'piano',.5)],[1,()=>playNote(N('C',4),'piano',.5)],[1,()=>playNote(N('C',4),'piano',.5)],[1,()=>playNote(N('C',4),'piano',.5)],...Array(8).fill([.5,()=>playNote(N('C',4),'piano',.25)])], 110), [4,2,1,.5]],
+  ['🤫','Pausa','A pausa é um silêncio que também conta tempo. Ouve: som, silêncio, som, silêncio.', () => beats([[1,()=>drum('tambor')],[1,()=>{}],[1,()=>drum('tambor')],[1,()=>{}],[1,()=>drum('tambor')],[1,()=>{}],[1,()=>drum('tambor')]], 90)],
+  ['💃','Compasso','O compasso junta os tempos em grupos. Marcha: 1-2. Valsa: 1-2-3, com força no 1.', () => {
+    beats([1,2,1,2,1,2,1,2].map(k => [1, () => drum(k === 1 ? 'bombo' : 'caixa')]), 110);
+    musSched(4800, () => beats([1,2,3,1,2,3,1,2,3].map(k => [1, () => drum(k === 1 ? 'bombo' : 'maracas')]), 140)); }],
+  ['🥁','Membranofones','Têm uma pele esticada que vibra: tambor, bombo e caixa.', () => beats([[1,()=>drum('tambor')],[1,()=>drum('bombo')],[1,()=>drum('caixa')]], 70)],
+  ['🔺','Idiofones','É o próprio instrumento que vibra: pratos, triângulo e maracas.', () => beats([[1.5,()=>drum('prato')],[1.5,()=>drum('triangulo')],[1,()=>drum('maracas')]], 70)],
+  ['🎵','Com notas e sem notas','O xilofone toca notas (Dó, Mi, Sol). O tambor não tem notas: só um som.', () => beats([[1,()=>playNote(N('C',4),'xilofone')],[1,()=>playNote(N('E',4),'xilofone')],[1,()=>playNote(N('G',4),'xilofone')],[1,()=>drum('tambor')],[1,()=>drum('tambor')],[1,()=>drum('tambor')]], 90)],
+  ['🎻','Famílias da orquestra','Cordas, madeiras, metais e percussão. Ouve um de cada.', () => beats([[2,()=>playNote(N('G',4),'violino',1)],[2,()=>playNote(N('G',4),'flauta',1)],[2,()=>playNote(N('G',4),'trompete',1)],[2,()=>drum('tambor')]], 90)],
+  ['🎨','Timbre','O timbre é a «cor» do som: a mesma nota soa diferente em cada instrumento.', () => beats(['piano','violino','flauta','trompete','xilofone'].map(i => [2, () => playNote(N('C',5), i, 1)]), 100)]
+];
+function buildConcepts(){
+  const C = $('#conceptCards'); C.innerHTML = '';
+  CONCEPTS.forEach(([e, t, txt, demo, figs]) => {
+    const d = document.createElement('div'); d.className = 'ccard';
+    d.innerHTML = `<h4>${e} ${t}</h4><p>${txt}</p>${figs ? `<div class="figs">${figs.map(f => figSVG(f)).join('')}</div>` : ''}<button class="lvl" type="button">🔊 Ouvir</button>`;
+    d.querySelector('button').addEventListener('click', () => { stopSong(); sayThen(txt, demo); });
+    C.appendChild(d);
+  });
+}
 
 /* ================= COZINHA ================= */
 const ING = {banana:['🍌','Banana'],morango:['🍓','Morango'],maca:['🍎','Maçã'],uva:['🍇','Uvas'],laranja:['🍊','Laranja'],mel:['🍯','Mel'],
@@ -1688,8 +2329,78 @@ $('#station').addEventListener('click', () => {
 });
 $('#ckSpeak').addEventListener('click', () => { if (ck.r) say(ck.r.steps[ck.i].say); });
 
+/* ================= ECRÃ DOS JOGADORES ================= */
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const DEF_CFG = () => ({body:1,mane:0,horn:0,wings:true,crown:false,bow:false,glitter:false,skin:null});
+const profCfg = id => Object.assign(DEF_CFG(), store.get(id + ':uni-cfg', {}));
+let pManage = false, formMode = null, askFn = null;
+function renderPlayers(){
+  const L = $('#plist'); L.innerHTML = '';
+  profiles.list.forEach(p => {
+    const sk = store.get(p.id + ':uni-skins', []).length;
+    const card = document.createElement('div'); card.className = 'pcard' + (p.id === profiles.cur ? ' cur' : '');
+    card.innerHTML = `<button class="pmain" type="button" aria-label="Jogar como ${esc(p.name)}"><div class="mini">${unicornSVG(profCfg(p.id))}</div><b>${esc(p.name)}</b><span class="pg">🦄 ${sk}/${SKINS.length} unicórnios</span></button>` +
+      (pManage ? `<div class="pact"><button type="button" data-a="ren">✏️ Nome</button><button type="button" data-a="reset">🔄 Recomeçar</button>${profiles.list.length > 1 ? '<button type="button" data-a="del">🗑️ Apagar</button>' : ''}</div>` : '');
+    card.querySelector('.pmain').addEventListener('click', () => { if (!pManage) choosePlayer(p.id); });
+    card.querySelectorAll('[data-a]').forEach(b => b.addEventListener('click', () => playerAction(b.dataset.a, p)));
+    L.appendChild(card);
+  });
+  $('#pManage').textContent = pManage ? '✅ Concluído' : '⚙️ Gerir jogadores';
+  $('#pWipe').hidden = !pManage;
+}
+function choosePlayer(id){
+  profiles.cur = id; store.set(PROF_KEY, profiles); loadProfileState(); pop();
+  const p = profiles.list.find(x => x.id === id); go('menu'); say('Olá, ' + p.name + '!');
+}
+function openForm(title, value){ $('#pFormTitle').textContent = title; $('#pName').value = value; $('#pForm').hidden = false; try{ $('#pName').focus(); }catch(e){} }
+$('#pAdd').addEventListener('click', () => { formMode = {type:'add'}; openForm('Nome do novo jogador', ''); });
+$('#pManage').addEventListener('click', () => { pManage = !pManage; $('#pForm').hidden = true; renderPlayers(); });
+$('#pCancel').addEventListener('click', () => { $('#pForm').hidden = true; });
+$('#pForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const name = $('#pName').value.trim().slice(0, 16); if (!name){ $('#pName').focus(); return; }
+  if (formMode && formMode.type === 'ren'){ formMode.p.name = name; }
+  else {
+    const id = 'p' + Date.now().toString(36);
+    profiles.list.push({id, name});
+    store.set(id + ':uni-cfg', Object.assign(DEF_CFG(), {body:ri(0,5), mane:ri(0,5), horn:ri(0,4)}));
+  }
+  store.set(PROF_KEY, profiles); $('#pForm').hidden = true; chime(); renderPlayers(); updateWho();
+});
+function wipeProfile(id){ try{ Object.keys(localStorage).filter(k => k.startsWith(id + ':')).forEach(k => localStorage.removeItem(k)); }catch(e){} }
+function playerAction(a, p){
+  if (a === 'ren'){ formMode = {type:'ren', p}; openForm('Mudar o nome', p.name); }
+  else if (a === 'reset') ask(`Recomeçar do início para ${p.name}? O progresso e os unicórnios ganhos vão ser apagados.`, 'Sim, recomeçar', () => {
+    wipeProfile(p.id); if (p.id === profiles.cur) loadProfileState(); renderPlayers();
+  });
+  else if (a === 'del') ask(`Apagar o jogador ${p.name}? Isto não se pode desfazer.`, 'Sim, apagar', () => {
+    wipeProfile(p.id); profiles.list = profiles.list.filter(x => x.id !== p.id);
+    if (profiles.cur === p.id) profiles.cur = profiles.list[0].id;
+    store.set(PROF_KEY, profiles); loadProfileState(); renderPlayers();
+  });
+}
+$('#pWipe').addEventListener('click', () => ask('Apagar todos os jogadores e começar do zero? Isto não se pode desfazer.', 'Sim, apagar tudo', () => {
+  profiles.list.forEach(p => wipeProfile(p.id));
+  profiles = {list:[{id:'p1', name:'Jogador 1'}], cur:'p1'}; store.set(PROF_KEY, profiles);
+  pManage = false; loadProfileState(); renderPlayers();
+}));
+function ask(text, yes, fn){ $('#askText').textContent = text; $('#askYes').textContent = yes; askFn = fn; $('#ask').hidden = false; }
+$('#askYes').addEventListener('click', () => { $('#ask').hidden = true; const f = askFn; askFn = null; if (f) f(); });
+$('#askNo').addEventListener('click', () => { $('#ask').hidden = true; askFn = null; });
+function updateWho(){ const p = profiles.list.find(x => x.id === profiles.cur); $('#whoName').textContent = p ? p.name : ''; }
+function loadProfileState(){
+  cfg = Object.assign(DEF_CFG(), ps.get('uni-cfg', {}));
+  prog = ps.get('uni-prog', {}); unlocked = ps.get('uni-skins', []); pieces = ps.get('uni-pieces', {}); xp = ps.get('uni-xp', 0);
+  countMax = ps.get('uni-max', 5); round = null; wins = 0;
+  syl.level = ps.get('dit-lvl', 'build'); if (!DIT_MODES.includes(syl.level)) syl.level = 'build'; syl.wins = 0;
+  mus.inst = ps.get('mus-inst', 'piano'); RG.lvl = ps.get('rg-lvl', 0);
+  quiz.wins = 0; fly.score = 0; $('#flyScore').textContent = 0; run.plats = null;
+  paintLevels(); renderUnis(); paintBadges(); paintLevel(); updateWho();
+}
+
 /* ================= ARRANQUE ================= */
-renderUnis(); paintLevels(); paintBadges(); stars($('#progress'), 0);
+loadProfileState(); stars($('#progress'), 0);
+if (profiles.list.length > 1) go('players');
 })();
 </script>
 </body>
